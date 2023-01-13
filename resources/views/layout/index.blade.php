@@ -56,7 +56,7 @@
             <div class="header_bottom">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg  custom_nav-container ">
-                        <a class="navbar-brand d-flex d-lg-none " href="{{ route('home') }}">
+                        <a class="navbar-brand d-flex d-lg-none " href="{{ route('home.index') }}">
                             <span>
                                 Fruise
                             </span>
@@ -70,7 +70,7 @@
 
                         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                             <ul class="navbar-nav ">
-                                <li class=" nav-item {{ request()->is('home') ? 'active' : '' }}">
+                                {{-- <li class=" nav-item {{ request()->is('home') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('home') }}">Home <span
                                             class="sr-only">(current)</span></a>
                                 </li>
@@ -82,7 +82,7 @@
                                 </li>
                                 <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
-                                </li>
+                                </li> --}}
 
                                 @auth
                                     <li class="nav-item">

@@ -13,7 +13,6 @@ class LogoutController extends Controller
 
     public function perform()
     {
-        Session::flash();
         Auth::logout();
         return redirect('home.index')->with("Logout","Logout successfully");
     }

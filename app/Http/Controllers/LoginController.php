@@ -19,8 +19,8 @@ public function show(){
 public function login(LoginRequest $request){
     $credentials=$request->getCredentials();
     if(!auth::validate($credentials)):
-        return redirect()->to('signin')
-        ->withErrors(trans('auth.failed'));
+        return redirect()->to('signin');
+        // ->withErrors(trans('auth.failed'));
     endif;
     $user=Auth::getProvider()->retrieveByCredentials($credentials);
     Auth::login($user);
