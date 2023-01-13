@@ -14,7 +14,7 @@ class RegisterRequest extends FormRequest
     public function authorize()
     {
         return true;
-        }
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,8 +24,9 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email:rfc,dns|unique:users,email',
-            'username' => 'required|unique:users,username',
+            'firstName' => 'required|min:2',
+            'lastName' => 'required|min:2',
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',            'email' => 'required|email:rfc,dns|unique:users,email',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password'
         ];
