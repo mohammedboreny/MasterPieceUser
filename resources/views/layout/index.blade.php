@@ -18,7 +18,8 @@
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!--owl slider stylesheet -->
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" />
@@ -49,20 +50,6 @@
                                 Parko
                             </span>
                         </a>
-                        <div class="contact_nav">
-                            <a href="">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>
-                                    +01 123455678990
-                                </span>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>
-                                    demo@gmail.com
-                                </span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -96,14 +83,28 @@
                                 <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('signIn')}}"> <i class="fa fa-user" aria-hidden="true"></i>
-                                        Login</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('signUp')}}"> <i class="fa fa-user" aria-hidden="true"></i>
-                                        Sign Up</a>
-                                </li>
+
+                                @auth
+                                    <li class="nav-item">
+                                        {{ auth()->user()->name }}
+                                        <div class="text-end">
+                                            <a href="{{ route('logout.perform') }}"
+                                                class="btn btn-outline-light me-2">Logout</a>
+                                        </div>
+                                    </li>
+                                @endauth
+                                @guest
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login.show') }}"> <i class="fa fa-user"
+                                                aria-hidden="true"></i>
+                                            Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register.show') }}"> <i class="fa fa-user"
+                                                aria-hidden="true"></i>
+                                            Sign Up</a>
+                                    </li>
+                                @endguest
                                 {{-- <form class="form-inline">
                                     <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                                         <i class="fa fa-search" aria-hidden="true"></i>

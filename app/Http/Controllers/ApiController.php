@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Story;
+use App\Models\Order;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -19,27 +19,27 @@ class ApiController extends Controller
         return $id ? User::findOrFail($id) : User::all();
     }
 
-    //return all stories
-    public function getStories($id = null)
+    //return all Order
+    public function getOrder($id = null)
     {
         if ($id) {
             $data = [
-                'story' => Story::findOrFail($id),
-                'comments' => Story::findOrFail($id)->comments,
+                'Order' => Order::findOrFail($id),
+                // 'comments' => Order::findOrFail($id)->comments,
             ];
         } else {
             $data = [
-                'stories' => Story::all(),
+                'Order' => Order::all(),
             ];
         }
         return response()->json($data);
     }
 
     //return all comments
-    public function getComments($id = null)
-    {
-        return $id ? Comment::findOrFail($id) : Comment::all();
-    }
+    // public function getComments($id = null)
+    // {
+    //     return $id ? Comment::findOrFail($id) : Comment::all();
+    // }
 
     // ============ post methods ============
 
@@ -79,37 +79,21 @@ class ApiController extends Controller
 
     }
 
-    // store new story
+    // store new Order
 
-    public function storeStory(Request $request)
+    public function storeOrder(Request $request)
     {
 
-        $story = new Story;
-        $story->id = $request->id;
-        $story->title = $request->storyName;
-        $story->author = $request->author;
-        $story->pages = $request->pages;
-        $story->backgroundImage = $request->backgroundImage;
-        $check = $story->save();
+        $Order = new Order;
+        $Order->id = $request->id;
+        $Order->title = $request->OrderName;
+        $Order->author = $request->author;
+        $Order->pages = $request->pages;
+        $Order->backgroundImage = $request->backgroundImage;
+        $check = $Order->save();
 
         if ($check) {
-            return ['results' => 'story added successfully'];
-        } else {
-            return ['results' => 'unknown error  occured '];
-        }
-    }
-
-    public function storeComment(Request $request)
-    {
-        $comment = new Comment;
-        $comment->id = $request->id;
-        $comment->user_id = $request->user_id;
-        $comment->story_id = $request->story_id;
-        $comment->content = $request->content;
-        $check = $comment->save();
-
-        if ($check) {
-            return ['results' => 'comment added successfully'];
+            return ['results' => 'Order added successfully'];
         } else {
             return ['results' => 'unknown error  occured '];
         }
@@ -131,38 +115,23 @@ class ApiController extends Controller
             return ['results' => 'update error'];
         }
     }
-    // update story
-    public function updateStory(Request $request)
+    // update Order
+    public function updateOrder(Request $request)
     {
-        $story = Story::findOrFail($request->id);
-        $story->title = $request['title'];
-        $story->author = strtolower($request['author']);
-        $story->backgroundImage = Hash::make($request['backgroundImage']);
-        $story->pages = $request['pages'];
-        $story->is_premium = $request['is_premium'];
-        $check =  $story->save();
+        $Order = Order::findOrFail($request->id);
+        $Order->title = $request['title'];
+        $Order->author = strtolower($request['author']);
+        $Order->backgroundImage = Hash::make($request['backgroundImage']);
+        $Order->pages = $request['pages'];
+        $Order->is_premium = $request['is_premium'];
+        $check =  $Order->save();
 
         if ($check) {
-            return ['results' => 'story updated successfully'];
+            return ['results' => 'Order updated successfully'];
         } else {
             return ['results' => 'update error'];
         }
     }
-
-    //update comment
-    public function updateComment(Request $request)
-    {
-        $comment = Comment::findOrFail($request->id);
-        $comment->content = $request->content;
-        $check =  $comment->save();
-
-        if ($check) {
-            return ['results' => 'comment updated successfully'];
-        } else {
-            return ['results' => 'update error'];
-        }
-    }
-
 
     //delete user
     public function deleteUser($id)
@@ -173,20 +142,12 @@ class ApiController extends Controller
     }
 
 
-    //delete story
-    public function deleteStory(Request $request)
+    //delete Order
+    public function deleteOrder(Request $request)
     {
-        $story = Story::findOrFail($request->id);
-        $story->delete();
-        return ['status' => 'story has been deleted successfully'];
+        $Order = Order::findOrFail($request->id);
+        $Order->delete();
+        return ['status' => 'Order has been deleted successfully'];
     }
 
-
-    //delete comment
-    public function deleteComment($id)
-    {
-        $comment = Comment::findOrFail($id);
-        $comment->delete();
-        return ['status' => 'comment has been deleted successfully'];
-    }
 }

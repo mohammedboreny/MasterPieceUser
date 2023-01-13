@@ -1,7 +1,13 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,46 +19,66 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+
+Route::group(['namespace' => 'App\Http\Controllers'], function()
+{   
+    /**
+     * Home Routes
+     */
+    Route::get('/', 'HomeController@index')->name('home.index');
+
+    Route::group(['middleware' => ['guest']], function() {
+        /**
+         * Register Routes
+         */
+
+         Route::get('/register', [AuthController::class, 'show'])->name('register.show');
+        Route::post('/register', [AuthController::class,'register'])->name('register.perform');
+
+        /**
+         * Login Routes
+         */
+
+         Route::get('/login', [LoginController::class, 'show'])->name('login.show');
+         Route::post('/login', [LoginController::class,'login'])->name('login.perform');
+    });
+
+    Route::group(['middleware' => ['auth']], function() {
+        /**
+         * Logout Routes
+         */
+
+         Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
+    });
 
 
-// Home Controller
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+});
 
 
-// About Page Controller
-Route::get('about', function () {
-    return view('about');
-})->name('about');
+// get Controller methods
+
+// Route::get('users/{id?}', [UserController::class, 'getUsers']);
+// Route::get('order/{id?}', [OrderController::class, 'getOrder']);
+
+// Route::get('/contact/all', [ContactController::class, "index"]);
+
+// // ============ post methods ==========
+
+// Route::post('storeUser', [UserController::class, 'storeUser']);
+// Route::post('storeOrder', [OrderController::class, 'storeOrder']);
+// Route::post('/contact', [ContactController::class, "store"]);
 
 
 
-// Contact us Page Controller
+// // ============ update methods ==========
 
-Route::get('contact', function () {
-    return view('contact');
-})->name('contact');
+// Route::post('updateUser/{id?}', [UserController::class, 'updateUser']);
 
+// Route::post('updateOrder/{id?}', [OrderController::class, 'updateOrder']);
 
-// Services Page Controller
+// //delete 
+// Route::delete('deleteUser/{id?}', [UserController::class, 'deleteUser']);
 
-Route::get('service', function () {
-    return view('service');
-})->name('service');
+// Route::delete('deleteOrder/{id?}', [OrderController::class, 'deleteOrder']);
 
-// Sign in Page Controller
-
-Route::get('/signin', function () {
-    return   view('authentications/signin');
-})->name('signIn');
-
-
-// Signup Page Controller
-
-Route::get('/signup', function () {
-    return   view('authentications/signUp');
-})->name('signUp');
+// Route::delete('/contact/{id}', [ContactController::class, "destroy"]);
