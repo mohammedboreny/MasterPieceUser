@@ -5,6 +5,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController as ControllersLogoutController;
 use App\Http\Controllers\RegisterController;
+use Illuminate\Contracts\View\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,21 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
      * Home Routes
      */
     Route::get('/', 'HomeController@index')->name('home.index');
+ 
+    Route::get('/aboutUs', function () {
+        return View('about');
+    })->name('aboutUs');
+    Route::get('/services', function () {
+        return View('service');
+    })->name('services');
+
+
+    // contactUs routes
+    Route::get('/contactUs', 'ContactController@viewPage')->name('contactUs.view');
+    Route::post('/contactUs', 'ContactController@store')->name('contactUs.store');
+
+
+
 
 
     Route::group(['middleware' => ['guest']], function () {

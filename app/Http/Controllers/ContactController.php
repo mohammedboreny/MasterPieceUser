@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+
+
+
+    public function viewPage(){
+
+
+        return view('contact');
+    }
+
+    
     public function index()
     {
         return response([
@@ -21,11 +31,12 @@ class ContactController extends Controller
             "name" => "required",
             "email" => "required|email",
             "content" => "required",
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10'
         ]);
 
         Contact::create($request->all());
 
-        return response([
+        return redirect()->back()->with([
             "message" => "We recived your message successfully",
             "status" => 200
         ]);

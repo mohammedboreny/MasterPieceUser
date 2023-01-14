@@ -14,8 +14,6 @@
     <link rel="shortcut icon" href="{{ asset('images/fevicon.png') }}" type="">
 
     <title> Fruise </title>
-
-
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -35,7 +33,6 @@
 </head>
 
 <body>
-
     <div class="hero_area">
         <div class="hero_bg_box">
             <img src="{{ asset('images/slider-bg.jpg') }}" alt="">
@@ -70,19 +67,19 @@
 
                         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                             <ul class="navbar-nav ">
-                                {{-- <li class=" nav-item {{ request()->is('home') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('home') }}">Home <span
+                                <li class=" nav-item {{ request()->is('home.index') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('home.index') }}">Home <span
                                             class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item {{ request()->is('service') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('service') }}">Services</a>
+                                 <li class="nav-item {{ request()->is('services') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('services') }}">Services</a>
+                                </li> 
+                                <li class="nav-item {{ request()->is('aboutUs') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('aboutUs') }}"> About</a>
                                 </li>
-                                <li class="nav-item {{ request()->is('about') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('about') }}"> About</a>
-                                </li>
-                                <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
-                                </li> --}}
+                                <li class="nav-item {{ request()->is('contactUs.view') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('contactUs.view') }}">Contact Us</a>
+                                </li> 
 
                                 @auth
                                     <li class="nav-item">

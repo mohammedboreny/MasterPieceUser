@@ -1,6 +1,7 @@
 @extends('layout.index');
 @section('content')
 
+
     <!-- contact section -->
     <section class="contact_section layout_padding">
         <div class="container">
@@ -60,16 +61,21 @@
                                 Contact Us
                             </h2>
                         </div>
-                        <form action="">
-                            <input type="text" placeholder="Your Name" />
-                            <input type="text" placeholder="Phone Number" />
-                            <input type="email" placeholder="Email" />
-                            <input type="text" class="message-box" placeholder="Message" />
+                        <form method="post" action="{{route('contactUs.store')}}">
+                            @csrf
+                            <input name="name" type="text" placeholder="Your Name" />
+                            <input name="phone" type="text" placeholder="Phone Number" />
+                            <input name="email" type="email" placeholder="Email" />
+                            <input name="content" type="text" class="message-box" placeholder="Message" />
                             <div class="btn_box">
                                 <button>
                                     SEND
                                 </button>
                             </div>
+                            @If(\Session::has('message')) ?
+                            <li>{!! \Session::get('message') !!}</li>
+
+                            @endif
                         </form>
                     </div>
                 </div>
