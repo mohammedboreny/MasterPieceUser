@@ -42,7 +42,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
  
 
     // Google Auth Controllers
-    Route::get('/auth/google/redirect', [AuthLoginController::class, 'googleRedirect']);
+    Route::get('/auth/google/redirect', [AuthLoginController::class, 'googleRedirect'])->name("googleRedirect");
     Route::get('/auth/google/callback', [AuthLoginController::class, 'googleCallBack']);
 
 

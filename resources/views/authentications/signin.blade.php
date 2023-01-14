@@ -65,7 +65,14 @@
 
     
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <div class="flex items-center justify-end mt-4">
+            Or Sign in with google
+            <a href="{{ route('googleRedirect') }}"> 
+                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png">
+            </a>
+        </div>
         <p class="mt-5 mb-3 text-muted">New user? Click <a href="{{route('register.show')}}">Here</a> to create new account</p>
+
     </form>
 </main>
 

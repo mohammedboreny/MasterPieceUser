@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -19,26 +20,22 @@ class AuthLoginController extends Controller
     public function googleCallBack()
     {
         $userdata = Socialite::driver('google')->stateless()->user();
-        $user=User::where('email',$userdata->email)->where('auth_type','google')->first();
+        $user = User::where('email', $userdata->email)->where('auth_type', 'google')->first();
 
-        if($user)
-        {
+        if ($user) {
             Auth::login($user);
             return redirect('/');
-        }
-        else
-        {
-             //do register
+        } else {
+            //do register
             $uuid = Str::uuid()->toString();
-            $user =new User();
-            $user->fullName =$userdata->name;
-            $user->email  =$userdata->email;
-            $user->password =Hash::make($uuid.now());
-            $user->auth_type ='github';
-            $user->save();  
+            $user = new User();
+            $user->fullName = $userdata->name;
+            $user->email  = $userdata->email;
+            $user->password = Hash::make($uuid . now());
+            $user->auth_type = 'google';
+            $user->save();
             Auth::login($user);
             return redirect('/');
         }
-       
     }
 }
