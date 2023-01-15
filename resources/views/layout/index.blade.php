@@ -202,7 +202,7 @@
                             </button>
                         </form>
                         @if (session('success'))
-                            <div class="alert alert-success">
+                            <div class="alert alert">
                                 {{ session('success') }}
                             </div>
                         @endif
