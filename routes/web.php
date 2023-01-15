@@ -5,6 +5,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AuthLoginController;
 use App\Http\Controllers\LogoutController as ControllersLogoutController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Contracts\View\View;
 
@@ -38,7 +39,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // contactUs routes
     Route::get('/contactUs', 'ContactController@viewPage')->name('contactUs.view');
     Route::post('/contactUs', 'ContactController@store')->name('contactUs.store');
-
+Route::get('/order','MapController@index'); 
  
 // NewsLetter routes
 Route::post('/newsLetter', 'Newsletter@store')->name('newsLetter.store');
