@@ -71,7 +71,7 @@ a:focus {
 /*header section*/
 .hero_area {
   position: relative;
-  min-height: 100vh;
+  min-height:20vh;
   display: flex;
   flex-direction: column;
 }

@@ -1,4 +1,4 @@
-@extends('layout.index');
+@extends('layout.index')
 @section('content')
 
 
@@ -73,7 +73,7 @@
                                 </button>
                             </div>
                             @If(\Session::has('message')) ?
-                            <li>{!! \Session::get('message') !!}</li>
+                            <li>{!! Session::get('message') !!}</li>
 
                             @endif
                         </form>

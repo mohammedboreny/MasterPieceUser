@@ -35,14 +35,14 @@
 <body>
     <div class="hero_area">
         <div class="hero_bg_box">
-            <img src="{{ asset('images/slider-bg.jpg') }}" alt="">
+            <img  src="{{ asset('images/slider-bg.jpg') }}" alt="">
         </div>
         <!-- header section strats -->
         <header class="header_section">
             <div class="header_top">
                 <div class="container-fluid ">
                     <div class="header_top_content">
-                        <a class="navbar-brand d-none d-lg-flex" href="index.html">
+                        <a class="navbar-brand d-none d-lg-flex" href={{ route('home.index') }}>
                             <span>
                                 Parko
                             </span>
@@ -217,12 +217,7 @@
 
     <!-- footer section -->
     <footer class="footer_section">
-        <div class="container">
-            <p>
-                &copy; <span id="displayYear"></span> All Rights Reserved By
-                <a href="https://html.design/">Free Html Templates</a>
-            </p>
-        </div>
+      
     </footer>
     <!-- footer section -->
 
