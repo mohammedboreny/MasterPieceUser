@@ -40,6 +40,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::post('/contactUs', 'ContactController@store')->name('contactUs.store');
 
  
+// NewsLetter routes
+Route::post('/newsLetter', 'Newsletter@store')->name('newsLetter.store');
+
 
     // Google Auth Controllers
     Route::get('/auth/google/redirect', [AuthLoginController::class, 'googleRedirect'])->name("googleRedirect");

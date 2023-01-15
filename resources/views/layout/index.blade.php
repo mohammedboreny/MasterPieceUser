@@ -35,7 +35,7 @@
 <body>
     <div class="hero_area">
         <div class="hero_bg_box">
-            <img  src="{{ asset('images/slider-bg.jpg') }}" alt="">
+            <img src="{{ asset('images/slider-bg.jpg') }}" alt="">
         </div>
         <!-- header section strats -->
         <header class="header_section">
@@ -71,15 +71,15 @@
                                     <a class="nav-link" href="{{ route('home.index') }}">Home <span
                                             class="sr-only">(current)</span></a>
                                 </li>
-                                 <li class="nav-item {{ request()->is('services') ? 'active' : '' }}">
+                                <li class="nav-item {{ request()->is('services') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('services') }}">Services</a>
-                                </li> 
+                                </li>
                                 <li class="nav-item {{ request()->is('aboutUs') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('aboutUs') }}"> About</a>
                                 </li>
                                 <li class="nav-item {{ request()->is('contactUs.view') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('contactUs.view') }}">Contact Us</a>
-                                </li> 
+                                </li>
 
                                 @auth
                                     <li class="nav-item">
@@ -194,12 +194,18 @@
                         <h4>
                             Subscribe
                         </h4>
-                        <form action="#">
-                            <input type="text" placeholder="Enter email" />
+                        <form action="{{ route('newsLetter.store') }}" method="post">
+                            @csrf
+                            <input name="email" type="text" placeholder="Enter email" />
                             <button type="submit">
                                 Subscribe
                             </button>
                         </form>
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 info-col">
@@ -217,7 +223,7 @@
 
     <!-- footer section -->
     <footer class="footer_section">
-      
+
     </footer>
     <!-- footer section -->
 
