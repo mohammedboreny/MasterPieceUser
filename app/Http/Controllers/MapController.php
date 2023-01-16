@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class MapController extends Controller
@@ -34,7 +35,9 @@ class MapController extends Controller
                 'draggable' => true
             ]
         ];
-        return view('map', compact('initialMarkers'));
+        $data=Location::all();
+        // return redirect()->back()->with(['data'=> $data]);
+        return view('map')->with(['initialMarkers'=>$initialMarkers,'data'=>$data]); 
     }
     }
 

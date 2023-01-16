@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" />
         
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- font awesome style -->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
@@ -38,7 +39,8 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -53,7 +55,7 @@
                     <div class="header_top_content">
                         <a class="navbar-brand d-none d-lg-flex" href={{ route('home.index') }}>
                             <span>
-                                Parko
+                                ParkJo
                             </span>
                         </a>
                     </div>
@@ -64,7 +66,7 @@
                     <nav class="navbar navbar-expand-lg  custom_nav-container ">
                         <a class="navbar-brand d-flex d-lg-none " href="{{ route('home.index') }}">
                             <span>
-                                Fruise
+                                ParkJo
                             </span>
                         </a>
 
@@ -201,7 +203,7 @@
                 <div class="col-md-6 col-lg-3 info-col">
                     <div class="info_contact">
                         <h4>
-                            Subscribe
+                            Subscribe for the newsletter
                         </h4>
                         <form action="{{ route('newsLetter.store') }}" method="post">
                             @csrf

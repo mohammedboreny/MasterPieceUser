@@ -44,7 +44,11 @@ Route::get('/order','MapController@index');
 // NewsLetter routes
 Route::post('/newsLetter', 'Newsletter@store')->name('newsLetter.store');
 
+// Order routes 
 
+
+Route::get('/locations', 'LocationController@index')->name('location.index');
+Route::post('/locations/{id}', 'LocationController@getLocation')->name('location.get');
     // Google Auth Controllers
     Route::get('/auth/google/redirect', [AuthLoginController::class, 'googleRedirect'])->name("googleRedirect");
     Route::get('/auth/google/callback', [AuthLoginController::class, 'googleCallBack']);
