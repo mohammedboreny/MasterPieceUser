@@ -1,10 +1,54 @@
 @extends('layout.index')
 @section('content')
+
     <body>
         <h1 class="text-center">Laravel Google Maps</h1>
-        <div id="map"></div>
-    <!-- Google Map -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtzzk2Xn3qk13emnwBqJgB8AhFajgEx3Y&callback=initMap"></script>
+        <div class="container justify-content-around mb-4 mt-4">
+            <div class="row ">
+                <div class="col-4 col-sm-12">
+                    <div class="map_container">
+                        <div class="map">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-4 col-sm-12 pt-3">
+                        <form id="contactForm" >
+
+                            <!-- Name Input -->
+                            <div class="form-floating mb-3">
+                              <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required" />
+                              <label for="name">Name</label>
+                              <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+                            </div>
+                
+                            <!-- Email Input -->
+                            <div class="form-floating mb-3">
+                              <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+                              <label for="emailAddress">Email Address</label>
+                            </div>
+                
+                            <!-- Message Input -->
+                            <div class="form-floating mb-3">
+                              <input class="form-control" id="message" type="text" placeholder="Message"  data-sb-validations="required">
+                              <label for="message">Message</label>
+                            </div>
+                
+                
+                        
+                            <!-- Submit button -->
+                            <div class="d-grid">
+                              <button  class="btn btn-primary btn-lg " id="submitButton" type="submit">Submit</button>
+                            </div>
+                          </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=+{{env('GOOGLE_MAP_KEY')}}+&callback=initMap"></script>
         <script>
             let map, activeInfoWindow, markers = [];
             /* ----------------------------- Initialize Map ----------------------------- */
@@ -37,7 +81,7 @@
                         content: `<b>${markerData.position.lat}, ${markerData.position.lng}</b>`,
                     });
                     marker.addListener("click", (event) => {
-                        if(activeInfoWindow) {
+                        if (activeInfoWindow) {
                             activeInfoWindow.close();
                         }
                         infowindow.open({
@@ -71,4 +115,4 @@
                 console.log(event.latLng.lng());
             }
         </script>
- @endsection
+    @endsection
