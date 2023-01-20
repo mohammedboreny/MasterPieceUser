@@ -2,7 +2,7 @@
 @section('content')
     <script type="text/javascript">
         let swith = true;
-        let idCatch = null;
+        let idCatch = 2;
 
         function submitConfirm() {
             if (idCatch != null) {
@@ -29,7 +29,9 @@
             inputHidden=document.getElementById('idCatch');
             inputHidden.value=idCatch;
         };
-
+function getId() {
+    return idCatch;
+}
         function handlePark(id) {
             setId(id);
             return true;
@@ -99,16 +101,13 @@
                                                         <td class="table-light">
                                                         <td>
                                                             <div class="btn btn-primary " id="myBtn{{ $x['id'] }}"
-                                                                onclick="handlePark({{ $x['id'] }})"> Pick </div>
+                                                                onclick="handlePark('{{$x['id']}}')"> Pick </div>
                                                         </td>
-                                                        {{-- <form action="{{ route('location.get', ['id'=>$x['id']]) }}" method="POST">
-                            @csrf
-                            <button class="btn btn-secondary" type="submit">pick</button>
-                        </form></td> --}}
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                      
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -138,9 +137,9 @@
         </div>
 
 
-        {{-- <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap">
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap">
         </script>
-        <script>
+        <script  type="text/javascript">
             function initMap(lat, lng) {
                 navigator.geolocation.getCurrentPosition(
                     function(position) {
@@ -150,7 +149,7 @@
                         console.log(error)
                     }
                 );
-
+console.log(getId());
                 var myLatLng = {
                    
                     lat:31.952645548202057,lng:35.91126743221995
@@ -166,7 +165,7 @@
                     map: map,
                 });
             }
-        </script> --}}
+        </script> 
         {{-- // let map, activeInfoWindow, markers = [];
         /* ----------------------------- Initialize Map ----------------------------- */
         // function initMap() {

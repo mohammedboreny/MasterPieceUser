@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -13,7 +14,8 @@ class BookingController extends Controller
 
    public function setOrder(Request $rq) 
     {
-
+        $user = Auth()->user();
+         dd($user['id']);
 dd($rq);
 // laravel controller create command for
 

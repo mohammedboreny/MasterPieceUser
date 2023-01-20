@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('booking', function (Blueprint $table) {
             $table->string('id')->primary();
+            $table->string('Park_id');
+            $table->string('user_id');
+            $table->date("BookingDate");
+            $table->integer('Reservation_Time');
+            $table->string('Phone_Number');
+            $table->timestamps();
         });
     }
 

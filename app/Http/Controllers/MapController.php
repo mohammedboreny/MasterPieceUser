@@ -35,7 +35,7 @@ class MapController extends Controller
                 'draggable' => true
             ]
         ];
-        $data=Location::all();
+        $data=Location::latest()->get();
         // return redirect()->back()->with(['data'=> $data]);
         return view('map')->with(['initialMarkers'=>$initialMarkers,'data'=>$data]); 
     }

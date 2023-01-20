@@ -13,7 +13,7 @@ class LocationController extends Controller
 
    public function getLocation(Request $rq) 
     {
-        $data = Location::where('id',$rq->id)->get(); 
+        $data = Location::where('id',$rq->id)-> get(); 
         return redirect()->back()->with('location',$data);
     }
 }
