@@ -78,7 +78,7 @@
 
                         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                             <ul class="navbar-nav ">
-                                <li class=" nav-item {{ request()->is('home.index') ? 'active' : '' }}">
+                                <li class=" nav-item {{ request()->is('/') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('home.index') }}">Home <span
                                             class="sr-only">(current)</span></a>
                                 </li>
@@ -88,8 +88,11 @@
                                 <li class="nav-item {{ request()->is('aboutUs') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('aboutUs') }}"> About</a>
                                 </li>
-                                <li class="nav-item {{ request()->is('contactUs.view') ? 'active' : '' }}">
+                                <li class="nav-item {{ request()->is('contactUs') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('contactUs.view') }}">Contact Us</a>
+                                </li>
+                                <li class="nav-item {{ request()->is('order') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('order.create') }}">Booking</a>
                                 </li>
 
                                 @auth
@@ -102,12 +105,12 @@
                                     </li>
                                 @endauth
                                 @guest
-                                    <li class="nav-item">
+                                    <li class="nav-item" {{ request()->is('login') ? 'active' : '' }}>
                                         <a class="nav-link" href="{{ route('login.show') }}"> <i class="fa fa-user"
                                                 aria-hidden="true"></i>
                                             Login</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" {{ request()->is('register') ? 'active' : '' }}>
                                         <a class="nav-link" href="{{ route('register.show') }}"> <i class="fa fa-user"
                                                 aria-hidden="true"></i>
                                             Sign Up</a>

@@ -26,6 +26,8 @@
         function setId(id) {
             idCatch = id;
             console.log(idCatch);
+            inputHidden=document.getElementById('idCatch');
+            inputHidden.value=idCatch;
         };
 
         function handlePark(id) {
@@ -43,17 +45,18 @@
                 </div>
 
                 <div class="col-lg-6 col-sm-12 pt-3">
-                    <form id="contactForm">
-                        <!-- Name Input -->
+                    <form id="orderForm" method="POST" action="{{route('order.SetOrder')}}" >
+                        @csrf
+                        <!-- Phone Input -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="text" placeholder="Phone"
+                            <input class="form-control" name="phone" id="phone" type="text" placeholder="Phone"
                                 data-sb-validations="required" />
-                            <label for="name">Phone</label>
+                            <label for="phone">Phone</label>
                             <div class="invalid-feedback" data-sb-feedback="name:required">phone is required.</div>
                         </div>
-                        <!-- Email Input -->
+                        <!-- No.Of Hours Input -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="emailAddress" type="number" placeholder="Email Address"
+                            <input class="form-control" id="NumberOfHours" type="number" name="NoOfHours" placeholder="Email Address"
                                 data-sb-validations="required,email" />
                             <label for="emailAddress">Number of hours</label>
                         </div>
@@ -120,16 +123,11 @@
                         <!-- Message Input -->
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="message" type="text" placeholder="Message"
-                                data-sb-validations="required">
-                            <label for="message">Message</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" name="date" id="message" type="date" placeholder="pickDate"
+                            <input class="form-control" name="date" id="ParkDate" type="date" placeholder="pickDate"
                                 data-sb-validations="required">
                             <label for="message">Parking Date</label>
                         </div>
-                        <input type="hidden" name="id" value=`${idCatch}`>
+                        <input type="hidden"  id="idCatch" name="ParkID" value=`${idCatch}`>
                         <!-- Submit button -->
                         <div class="d-grid">
                             <button class="btn btn-primary btn-lg " id="submitButton" type="submit">Submit</button>

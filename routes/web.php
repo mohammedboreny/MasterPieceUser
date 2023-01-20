@@ -27,7 +27,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
      * Home Routes
      */
     Route::get('/', 'HomeController@index')->name('home.index');
- 
+
     Route::get('/aboutUs', function () {
         return View('about');
     })->name('aboutUs');
@@ -39,16 +39,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // contactUs routes
     Route::get('/contactUs', 'ContactController@viewPage')->name('contactUs.view');
     Route::post('/contactUs', 'ContactController@store')->name('contactUs.store');
-Route::get('/order','MapController@index'); 
- 
-// NewsLetter routes
-Route::post('/newsLetter', 'Newsletter@store')->name('newsLetter.store');
+    Route::get('/order', 'MapController@index')->name('order.create');
+    
+    Route::post('/order', 'BookingController@setOrder')->name('order.SetOrder');
 
-// Order routes 
+    // NewsLetter routes
+    Route::post('/newsLetter', 'Newsletter@store')->name('newsLetter.store');
+
+    // Order routes 
 
 
-Route::get('/locations', 'LocationController@index')->name('location.index');
-Route::post('/locations/{id}', 'LocationController@getLocation')->name('location.get');
+    Route::get('/locations', 'LocationController@index')->name('location.index');
+    Route::post('/locations/{id}', 'LocationController@getLocation')->name('location.get');
     // Google Auth Controllers
     Route::get('/auth/google/redirect', [AuthLoginController::class, 'googleRedirect'])->name("googleRedirect");
     Route::get('/auth/google/callback', [AuthLoginController::class, 'googleCallBack']);
