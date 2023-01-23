@@ -40,6 +40,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/contactUs', 'ContactController@viewPage')->name('contactUs.view');
     Route::post('/contactUs', 'ContactController@store')->name('contactUs.store');
     Route::get('/order', 'MapController@index')->name('order.create');
+    Route::get('/order/{id}', 'BookingController@checkOut')->name('order.checkOut');
+
     
     Route::post('/order', 'BookingController@setOrder')->name('order.SetOrder');
 

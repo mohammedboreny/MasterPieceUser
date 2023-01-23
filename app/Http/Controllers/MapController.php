@@ -37,7 +37,7 @@ class MapController extends Controller
         ];
         $data=Location::latest()->get();
         // return redirect()->back()->with(['data'=> $data]);
-        return view('map')->with(['initialMarkers'=>$initialMarkers,'data'=>$data]); 
+        return view('Parkings')->with(['initialMarkers'=>$initialMarkers,'data'=>$data]); 
     }
     }
 
