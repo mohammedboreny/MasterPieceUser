@@ -75,10 +75,84 @@
                             <label for="message">Parking Date</label>
                         </div>
                         <input type="hidden" id="idCatch" name="ParkID" value=`${idCatch}`>
+                        <div class="col text-center mb-5">
+                            <button type="button" class="btn btn-danger " data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Add your payment details
+                            </button>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="post" id="submitBtn">
+
+                                            <div class="form-floating mb-3 ">
+                                                <div
+                                                    class="d-flex align-items-center flex-wrap justify-content-between w-100 border rounded">
+
+                                                    <div class="form-floating w-100 m-1 mb-3">
+                                                        <input class="form-control" name="email" id="email"
+                                                            type="email" placeholder="email"
+                                                            data-sb-validations="required">
+                                                        <label for="message">Email</label>
+                                                    </div>
+                                                    <div class="form-floating w-100 m-1">
+                                                        <input type="text" name="cardNo" id="cardNo"
+                                                            class="form-control " placeholder="Card number">
+                                                        <label for="">Card Number</label>
+                                                    </div>
+                                                    <div class="d-flex wrap w-100">
+
+
+                                                        <input type="date" name="expirationDate"
+                                                            class="form-control m-1 mt-2" placeholder="MM/YY">
+
+                                                        <input type="password" name="securityCode" maxlength=3
+                                                            class="form-control m-1 mt-2" placeholder="CVV">
+                                                    </div>
+                                                    <br>
+                                                    <div class="my-3 form-floating w-100 d-flex">
+
+                                                        <input type="text" placeholder="Card " name=""
+                                                            class="form-control m-1" id="">
+                                                        <label class=" mb-2">Cardholder name</label>
+
+                                                    </div>
+                                                    <br>
+                                                    <div class="my-1 form-floating w-100 d-flex">
+                                                        <input class="form-control m-1" id="billingAddress" placeholder="dfsdas" name="billingAddress" type="text">
+                                                        <label for="" class=" mb-2">Billing address</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Submit button -->
-                        <div class="d-grid">
+                        <div class="mt-6 text-center">
                             <button class="btn btn-primary btn-lg " id="submitButton" type="submit">Submit</button>
                         </div>
+
                     </form>
                 </div>
             </div>
