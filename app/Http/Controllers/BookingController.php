@@ -16,11 +16,26 @@ class BookingController extends Controller
 
     public function checkOut($id)
     {
-
+        $phone_number=Auth()->user()->phone_number;
         if (Auth()->user()) {
-
-            $data = Location::all()->where('id', $id);
-            redirect()->with('',);
+            
+            $data = Location::all()->where('id', $id)->first();
+            $dataIntoArray=[
+                'id' => $data->id,
+                'name' =>$data->name,
+                'phone' =>$data->phone,
+                'street'=>$data->street,
+                'city' =>$data->city,
+                'state' =>$data->state,
+                'zip' =>$data->zip,
+                'lat' =>$data->latitude,
+                'long'=>$data->longitude,
+                'created_at' =>$data->created_at,
+                'updated_at' =>$data->updated_at,
+            ];
+           return view('map')->with('data',['location'=>$dataIntoArray,
+            'phone_number'=>$phone_number
+        ]);
         }
         else{
           return  redirect('/login');
