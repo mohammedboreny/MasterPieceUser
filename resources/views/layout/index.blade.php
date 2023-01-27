@@ -12,7 +12,16 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link rel="shortcut icon" href="{{ asset('images/fevicon.png') }}" type="">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
     <style>
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
+
         .text-center {
             text-align: center;
         }

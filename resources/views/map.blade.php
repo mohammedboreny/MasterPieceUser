@@ -1,6 +1,6 @@
 @extends('layout.index')
 @section('content')
-    <script type="text/javascript" defer>
+    <script type="text/javascript" async>
         let swith = true;
         let idCatch = 2;
 
@@ -21,7 +21,11 @@
             }
 
         }
-
+        var d = new Date();
+var n = d.toLocaleTimeString();
+        let a=document.getElementById("ParkDateTime");
+        console.log(a);
+        a.min=new Date();
         function setId(id) {
             idCatch = id;
             console.log(idCatch);
@@ -70,12 +74,18 @@
                         <!-- Message Input -->
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" min="<?php echo date('Y-m-d'); ?>" name="date" id="ParkDate"
+                            <input class="form-control" min="<?php echo date('Y-m-d'); ?>" name="date" 
                                 type="date" placeholder="pickDate" data-sb-validations="required">
                             <label for="message">Parking Date</label>
                         </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control"  name="date" id="ParkDateTime"
+                                type="time" placeholder="pickDate" data-sb-validations="required">
+                            <label for="message">Parking Date</label>
+                        </div>
+                        
                         <input type="hidden" id="idCatch" name="ParkID" value=`${idCatch}`>
-                        <div class="col text-center mb-5">
+                        {{-- <div class="col text-center mb-5">
                             <button type="button" class="btn btn-danger " data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Add your payment details
@@ -136,9 +146,9 @@
 
                                             </div>
 
-                                        </form>
+                                        </form> --}}
 
-                                    </div>
+                                    {{-- </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
@@ -146,11 +156,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- Submit button -->
                         <div class="mt-6 text-center">
-                            <button class="btn btn-primary btn-lg " id="submitButton" type="submit">Submit</button>
+                            <button style="background-color: #ff7241" class="btn text-light btn-light btn-lg " id="submitButton" type="submit">Check Out</button>
                         </div>
 
                     </form>

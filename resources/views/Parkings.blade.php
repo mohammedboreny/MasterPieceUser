@@ -84,8 +84,8 @@
               style="border:0" allowfullscreen></iframe>
           </div>
           <div class="card-body closed px-0">
-            <div class="button px-2 mt-3">
-              <a href="{{url('/order/${item.id}')}}" class="btn btn-floating id='btn-sub'  btn-lg living-coral text-white float-end" style="margin-right: .75rem;">book</a>
+            <div style="background-color: #ff7241" class="button px-2 mt-3">
+              <a style="background-color: #ff7241" href="{{url('/order/${item.id}')}}" class="btn btn-floating id='btn-sub'  btn-lg living-coral text-white float-end" style="margin-right: .75rem;">book</a>
             </div>
             <input type="hidden" name="" id='btn-value' value='${item.id}'>
             <div class="bg-white px-4 pb-4 pt-3-5">

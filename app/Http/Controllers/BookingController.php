@@ -16,7 +16,11 @@ class BookingController extends Controller
 
     public function checkOut($id)
     {
+        $checkPhone=Auth()->user()->phone_number;
+        if($checkPhone){
         $phone_number=Auth()->user()->phone_number;
+    }else{
+        $phone_number="";}
         if (Auth()->user()) {
             
             $data = Location::all()->where('id', $id)->first();
