@@ -11,6 +11,7 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="shortcut icon" href="{{ asset('images/fevicon.png') }}" type="">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -103,7 +104,7 @@ input[type=number]::-webkit-inner-spin-button {
                                 <li class="nav-item {{ request()->is('order') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('order.create') }}">Booking</a>
                                 </li>
-
+                                {{-- @if(Auth::check() && Auth::user()->role == "admin") --}}
                                 @auth
                                     <li class="nav-item">
                                         {{ auth()->user()->name }}

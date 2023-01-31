@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AuthLoginController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\LogoutController as ControllersLogoutController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\RegisterController;
@@ -39,25 +40,28 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // contactUs routes
     Route::get('/contactUs', 'ContactController@viewPage')->name('contactUs.view');
     Route::post('/contactUs', 'ContactController@store')->name('contactUs.store');
-    Route::get('/order', 'MapController@index')->name('order.create');
-    Route::get('/order/{id}', 'BookingController@checkOut')->name('order.checkOut');
 
-    
+    // Route::get('/order/confirmations', 'BookingController@confirmationIndex')->name('order.confirmation');
+
     Route::post('/order', 'BookingController@setOrder')->name('order.SetOrder');
 
     // NewsLetter routes
     Route::post('/newsLetter', 'Newsletter@store')->name('newsLetter.store');
-
+    Route::get('/order', 'MapController@index')->name('order.create');
+    Route::get('/order/{id}', 'BookingController@checkOut')->name('order.checkOut');
+    Route::post('/order/Confirmation', [BookingController::class,'OrderConfirmation'])->name('order.Confirmation');
     // Order routes 
 
 
     Route::get('/locations', 'LocationController@index')->name('location.index');
     Route::post('/locations/{id}', 'LocationController@getLocation')->name('location.get');
+
     // Google Auth Controllers
     Route::get('/auth/google/redirect', [AuthLoginController::class, 'googleRedirect'])->name("googleRedirect");
     Route::get('/auth/google/callback', [AuthLoginController::class, 'googleCallBack']);
 
 
+    // Booking Controllers
 
 
 
@@ -85,32 +89,3 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform');
     });
 });
-
-
-// get Controller methods
-
-// Route::get('users/{id?}', [UserController::class, 'getUsers']);
-// Route::get('order/{id?}', [OrderController::class, 'getOrder']);
-
-// Route::get('/contact/all', [ContactController::class, "index"]);
-
-// // ============ post methods ==========
-
-// Route::post('storeUser', [UserController::class, 'storeUser']);
-// Route::post('storeOrder', [OrderController::class, 'storeOrder']);
-// Route::post('/contact', [ContactController::class, "store"]);
-
-
-
-// // ============ update methods ==========
-
-// Route::post('updateUser/{id?}', [UserController::class, 'updateUser']);
-
-// Route::post('updateOrder/{id?}', [OrderController::class, 'updateOrder']);
-
-// //delete 
-// Route::delete('deleteUser/{id?}', [UserController::class, 'deleteUser']);
-
-// Route::delete('deleteOrder/{id?}', [OrderController::class, 'deleteOrder']);
-
-// Route::delete('/contact/{id}', [ContactController::class, "destroy"]);
