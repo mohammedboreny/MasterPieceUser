@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
     <style>
-        @media (max-width: 376px) {
+        @media (max-width: 1200px) {
 
 
             .navbarSpecial {
@@ -120,14 +120,17 @@
                                 @auth
                                     {{ auth()->user()->name }}
                                     <li class="nav-item dropdown ">
-                                        <a class="nav-link bi bi-list-task dropdown-toggle" href="#"
+                                        <a class="nav-link bi bi-list-task  fs-5 dropdown-toggle" href="#"
                                             id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                             aria-expanded="false">
                                         </a>
-                                        <ul class="dropdown-menu text-center bg-transparent  mx-n5 "
+                                        <ul class="dropdown-menu text-center bg-transparent pt-4  mx-n5 "
                                             aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item navbarSpecial" href="{{route('profile.summary')}}">Action</a></li>
-                                            <li><a class="dropdown-item navbarSpecial" href="{{route('profile.Bookings',['id'=>auth()->user()->id])}}">Your Orders</a>
+                                            <li><a class="dropdown-item navbarSpecial"
+                                                    href="{{ route('profile.summary') }}">Action</a></li>
+                                            <li><a class="dropdown-item navbarSpecial"
+                                                    href="{{ route('profile.Bookings', ['id' => auth()->user()->id]) }}">Your
+                                                    Orders</a>
 
                                             </li>
                                             <li>
