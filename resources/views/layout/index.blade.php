@@ -17,15 +17,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
     <style>
-
-input[type=number]::-webkit-inner-spin-button {
-    opacity: 1
-}
+        input[type=number]::-webkit-inner-spin-button {
+            opacity: 1
+        }
 
 
         .text-center {
             text-align: center;
         }
+
         #map {
             width: "100%";
             height: 400px;
@@ -39,8 +39,8 @@ input[type=number]::-webkit-inner-spin-button {
     <!--owl slider stylesheet -->
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" />
-        
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- font awesome style -->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
@@ -49,8 +49,12 @@ input[type=number]::-webkit-inner-spin-button {
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <!-- responsive style -->
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
@@ -104,7 +108,7 @@ input[type=number]::-webkit-inner-spin-button {
                                 <li class="nav-item {{ request()->is('order') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('order.create') }}">Booking</a>
                                 </li>
-                                {{-- @if(Auth::check() && Auth::user()->role == "admin") --}}
+                                {{-- @if (Auth::check() && Auth::user()->role == 'admin') --}}
                                 @auth
                                     <li class="nav-item">
                                         {{ auth()->user()->name }}
@@ -158,7 +162,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     <!-- info section -->
 
-    <section class="info_section layout_padding2">
+    <section class="info_section origin-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3 info-col">
@@ -235,7 +239,14 @@ input[type=number]::-webkit-inner-spin-button {
                 <div class="col-md-6 col-lg-3 info-col">
                     <div class="map_container">
                         <div class="map">
-                            <div id="googleMap"></div>
+                            <div class="mapouter">
+                                <div class="gmap_canvas"><iframe width="514" height="500" id="gmap_canvas"
+                                        src="https://maps.google.com/maps?q=Orange%20Digital%20Village%20Zarqa,%20Zarqa&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                                        href="https://123movies-i.net">123movies</a><br>
+                                  
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

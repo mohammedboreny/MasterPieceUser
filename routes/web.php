@@ -37,31 +37,43 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     })->name('services');
 
 
+    // Profile Routes
+    Route::get('/profile/{id}', function () {
+        return View('/profile');
+    })->name('profile');
+    Route::get('/profile/{id}/summery', function () {
+        return View('profileComponents.Overview');
+    })->name('profile.summary');
+    Route::get('/profile/{id}/Bookings', function () {
+        return View('profileComponents.Bookings');
+    })->name('profile.Bookings');
+    Route::get('/profile/{id}/addReview', function () {
+        return View('profileComponents.addReview');
+    })->name('profile.addReview');
+
+
     // contactUs routes
     Route::get('/contactUs', 'ContactController@viewPage')->name('contactUs.view');
     Route::post('/contactUs', 'ContactController@store')->name('contactUs.store');
 
-    // Route::get('/order/confirmations', 'BookingController@confirmationIndex')->name('order.confirmation');
-
-    Route::post('/order', 'BookingController@setOrder')->name('order.SetOrder');
-
     // NewsLetter routes
     Route::post('/newsLetter', 'Newsletter@store')->name('newsLetter.store');
+   
+
+    // Order And Booking  routes 
+    Route::post('/order', 'BookingController@setOrder')->name('order.SetOrder');
+    Route::get('/locations', 'LocationController@index')->name('location.index');
+    Route::post('/locations/{id}', 'LocationController@getLocation')->name('location.get');
     Route::get('/order', 'MapController@index')->name('order.create');
     Route::get('/order/{id}', 'BookingController@checkOut')->name('order.checkOut');
     Route::post('/order/Confirmation', [BookingController::class,'OrderConfirmation'])->name('order.Confirmation');
-    // Order routes 
-
-
-    Route::get('/locations', 'LocationController@index')->name('location.index');
-    Route::post('/locations/{id}', 'LocationController@getLocation')->name('location.get');
 
     // Google Auth Controllers
     Route::get('/auth/google/redirect', [AuthLoginController::class, 'googleRedirect'])->name("googleRedirect");
     Route::get('/auth/google/callback', [AuthLoginController::class, 'googleCallBack']);
 
 
-    // Booking Controllers
+    
 
 
 
