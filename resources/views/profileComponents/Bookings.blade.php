@@ -1,5 +1,6 @@
-@extends('../Profile')
-@section('content2')
+@extends('layout.index')
+@section('content')
+<div class="container">
 <div class="table-responsive-md "style="height:40vh ;">
     <table class="table table-secondary">
         <thead>
@@ -22,6 +23,7 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>
 
 

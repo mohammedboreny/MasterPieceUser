@@ -11,9 +11,9 @@
     <div class="row justify-content-md-center">
     <div class="col-md-2">
     <ul class="list-group">
-        <a href="{{route('profile.summary',['id'=>1])}}" class="list-group-item {{ request()->is('profile/1/summery') ? 'active' : '' }}">Edit Profile</a>
-        <a href="{{route('profile.Bookings',['id'=>1])}}" class="list-group-item {{ request()->is('profile/1/Bookings') ? 'active' : '' }}">Bookings</a>
-        <a href="{{route('profile.addReview',['id'=>1])}}" class="list-group-item {{ request()->is('profile/1/addReview') ? 'active' : '' }}">Add Review</a>
+        <a href="{{route('profile.summary')}}" class="list-group-item {{ request()->is("profile/summery") ? 'active' : '' }}">Edit Profile</a>
+     <a href="{{route('profile.changePassword')}}" class="list-group-item {{ request()->is("profile/changePassword") ? 'active' : '' }}">Change Password</a>
+        <a href="{{route('profile.addReview')}}" class="list-group-item {{ request()->is("profile/addReview") ? 'active' : '' }}">Add Review</a>
 
         @if(Auth::check() && Auth::user()->role == "admin")
         <a href="" class="list-group-item">Show Admin Page</a>

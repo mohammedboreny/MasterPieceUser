@@ -38,20 +38,22 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
 
     // Profile Routes
-    Route::get('/profile/{id}', function () {
+    Route::get('/profile', function () {
         return View('/profile');
     })->name('profile');
-    Route::get('/profile/{id}/summery', function () {
+    Route::get('/profile/summery', function () {
         return View('profileComponents.Overview');
     })->name('profile.summary');
-    Route::get('/profile/{id}/Bookings', function () {
+    Route::get('/profile/Bookings', function () {
         return View('profileComponents.Bookings');
     })->name('profile.Bookings');
-    Route::get('/profile/{id}/addReview', function () {
+    Route::get('/profile/addReview', function () {
         return View('profileComponents.addReview');
     })->name('profile.addReview');
 
-
+    Route::get('/profile/changePassword', function () {
+        return View('profileComponents.changePassword');
+    })->name('profile.changePassword');
     // contactUs routes
     Route::get('/contactUs', 'ContactController@viewPage')->name('contactUs.view');
     Route::post('/contactUs', 'ContactController@store')->name('contactUs.store');

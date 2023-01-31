@@ -17,6 +17,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
     <style>
+        @media (max-width: 376px) {
+
+
+            .navbarSpecial {
+                color: white !important;
+            }
+        }
+
         input[type=number]::-webkit-inner-spin-button {
             opacity: 1
         }
@@ -110,13 +118,30 @@
                                 </li>
                                 {{-- @if (Auth::check() && Auth::user()->role == 'admin') --}}
                                 @auth
-                                    <li class="nav-item">
-                                        {{ auth()->user()->name }}
-                                        <div class="text-end">
-                                            <a href="{{ route('logout.perform') }}"
-                                                class="btn btn-outline-light me-2">Logout</a>
-                                        </div>
+                                    {{ auth()->user()->name }}
+                                    <li class="nav-item dropdown ">
+                                        <a class="nav-link bi bi-list-task dropdown-toggle" href="#"
+                                            id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                        </a>
+                                        <ul class="dropdown-menu text-center bg-transparent  mx-n5 "
+                                            aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item navbarSpecial" href="{{route('profile.summary')}}">Action</a></li>
+                                            <li><a class="dropdown-item navbarSpecial" href="{{route('profile.Bookings',['id'=>auth()->user()->id])}}">Your Orders</a>
+
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider navbarSpecial">
+                                            </li>
+                                            <li class>
+                                                <a class="dropdown-item navbarSpecial "
+                                                    href="{{ route('logout.perform') }}">Logout</a>
+                                            </li>
+                                        </ul>
                                     </li>
+
+
+
                                 @endauth
                                 @guest
                                     <li class="nav-item" {{ request()->is('login') ? 'active' : '' }}>
@@ -162,7 +187,7 @@
 
     <!-- info section -->
 
-    <section class="info_section origin-bottom">
+    <section class="info_section layout_padding2">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-lg-3 info-col">
@@ -236,18 +261,11 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 info-col">
-                    <div class="map_container">
-                        <div class="map">
-                            <div class="mapouter">
-                                <div class="gmap_canvas"><iframe width="514" height="500" id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q=Orange%20Digital%20Village%20Zarqa,%20Zarqa&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                                        href="https://123movies-i.net">123movies</a><br>
-                                  
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-6 col-lg-3 info-col ">
+                    <div style="flex-direction:column-reverse; " class="map_container d-sm-grid  ">
+                        <iframe
+                            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Orange%20Digital%20Village%20Zarqa,%20Zarqa+()&amp;t=p&amp;z=19&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+
                     </div>
                 </div>
             </div>
@@ -257,7 +275,7 @@
     <!-- end info section -->
 
     <!-- footer section -->
-    <footer class="footer_section">
+
 
     </footer>
     <!-- footer section -->
