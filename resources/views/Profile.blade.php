@@ -1,6 +1,12 @@
 @extends('layout.index')
 @section('content')
 <style>
+    @media (min-width:420px ){
+        .PageHeader{
+            margin-top: 100px !important;
+        }
+    }
+
   .list-group-item.active{
     background-color: #ff7241 !important;
     border-color: #ff7241 !important;
@@ -20,7 +26,7 @@
         @endif
       </ul>
 </div>
-<div class="col-md-7 ">
+<div class="col-md-7 PageHeader ">
 
     @yield('content2')
 
