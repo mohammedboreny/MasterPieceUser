@@ -15,7 +15,7 @@
                         <!-- Phone Input -->
                         <div class="form-floating mb-3">
                             <input class="form-control" name="phone" value="{{ $data['phone_number'] }}" id="phone"
-                                type="text" placeholder="Phone" required/>
+                                type="phone" placeholder="Phone" required/>
                             <label for="phone">Phone</label>
                             <div class="invalid-feedback">phone is required.</div>
                         </div>
@@ -63,19 +63,34 @@
         form.addEventListener('submit', formListener)
             function formListener(e) {
                 e.preventDefault();
+                let phone = e.target.phone.value;
+                console.log(phone);
                 let time = new Date();
                 let dateTimeHours=e.target.dateTime.valueAsDate.getUTCHours();
-                let dateTimeMinutes=e.target.dateTime.valueAsDate.getUTCMinutes().
+                let dateTimeMinutes=e.target.dateTime.valueAsDate.getMinutes().
                 dateTimeHours=dateTimeHours-2 ;
-                dateTimeMinutes=dateTimeMinutes+26;
+                dateTimeMinutes=dateTimeMinutes-60;
                 console.log(time.getHours());
                  console.log('hours'+dateTimeHours);
                  console.log("min"+dateTimeMinutes);
-
+                if (!phone.match(/^(()?\d{3}())?(-|\s)?\d{3}(-|\s)?\d{4}$/)) {
+                    Swal.fire(
+                      'Incorrect phone number',
+                      'Kindly Check the phone number again',
+                      'info'
+                    )  
+                }
                  if (dateTimeHours<=time.getHours()) {
-                    console.log('Denied request');
+                    if (dateTimeMinutes<=time.getMinutes()) {
+                     
+                    Swal.fire(
+                      'Reservation Time Unavailable',
+                      'Kindly choose Parking time 30 minutes after',
+                      'info'
+                    )  
+                    }
                  }
-                //  form.submit();
+                 form.submit();
                  return false;
             }
 
