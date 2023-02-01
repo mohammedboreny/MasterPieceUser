@@ -54,10 +54,10 @@
             </div>
             <form 
             action="{{route('order.Confirmation',$data['order'],$data['park']['id'])}}"
-                 class=" col-md-4 col-sm-12" method="post" id="submitBtn">
+                 class=" col-md-6 col-sm-12" method="post" id="submitBtn">
                 @csrf
                 <div class="form-floating mb-3 ">
-                    <h3>Provide Your Credit Card information here</h3>
+                    <h3 class="text-center w-100">Provide Your Credit Card information here</h3>
                     <div style="flex-direction: row-reverse;" class="d-flex align-items-center flex-wrap justify-content-between w-100 border rounded">
 
                         <div class="form-floating w-100 m-1 mb-3">

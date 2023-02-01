@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('booking', function (Blueprint $table) {
+        Schema::create('credit_cards', function (Blueprint $table) {
             $table->id();
-            $table->string('Card_id');
-            $table->string('Park_id');
             $table->string('user_id');
-            $table->date("BookingDate");
-            $table->integer('Reservation_Time');
-            $table->string('Phone_Number');
-            $table->string('payment_amount');
-            $table->boolean('discount')->default(false);
+            $table->string('email');
+            $table->string('cardNo');
+            $table->string('securityCode');
+            $table->string('Cardholder');
+            $table->string('billingAddress');
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('credit_cards');
     }
 };

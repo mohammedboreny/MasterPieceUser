@@ -1,6 +1,10 @@
 @extends('layout.index')
 @section('content')
-<div class="container">
+
+<div class="container mt-3 pt-3">
+    @If(\Session::has('status')) 
+<div style="background-color: #ff7241" class="alert text-light text-center mt-3"> {!! Session::get('status') !!}</div>
+@endif
 <div class="table-responsive-md "style="height:40vh ;">
     <table class="table table-secondary">
         <thead>

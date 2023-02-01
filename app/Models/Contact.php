@@ -15,5 +15,5 @@ class Contact extends Model
         "email",
         "content"
     ];
-    protected $table='contactus';
+    protected $table='contact us';
 }

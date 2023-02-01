@@ -27,9 +27,7 @@
                         </div>
 
 
-                        @if ($errors->any())
-                        {{ implode('', $errors->all('<div>:message</div>')) }}
-                    @endif
+                    
 
                         <!-- Message Input -->
 
@@ -44,7 +42,13 @@
                             <label for="message">Parking time</label>
                         </div>
                         @If(\Session::has('status')) 
-                        <div class="text-danger"> our Working hours is between 9:00 AM and 10:00 PM</div>
+                        <div class="text-danger text-center mb-3">{!! Session::get('status') !!}</div>
+                        @endif
+                        @If(\Session::has('WorkingHours')) 
+                        <div class="text-danger text-center mb-3"> Our Working hours is between 9:00 AM and 10:00 PM</div>
+                        @endif
+                        @if ($errors->any())
+                        <div class="text-danger text-center mb-3"> {{implode('', $errors->all())}} </div>
                         @endif
                         <input type="hidden" id="idCatch" name="ParkID" value="<?php echo $data['location']['id']; ?>">
                         <!-- Submit button -->
