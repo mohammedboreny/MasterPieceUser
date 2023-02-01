@@ -1,7 +1,7 @@
 @extends('layout.index')
 @section('content')
 
-    <body>
+    
         <h1 class="text-center">Booking</h1>
         <div class="container justify-content-center mb-4 mt-4">
             <div class="row">
@@ -15,42 +15,46 @@
                         <!-- Phone Input -->
                         <div class="form-floating mb-3">
                             <input class="form-control" name="phone" value="{{ $data['phone_number'] }}" id="phone"
-                                type="phone" placeholder="Phone" required/>
+                                type="phone" placeholder="Phone" required />
                             <label for="phone">Phone</label>
                             <div class="invalid-feedback">phone is required.</div>
                         </div>
                         <!-- No.Of Hours Input -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="NumberOfHours" min="1" max="5" type="number" name="NoOfHours"
-                                placeholder="Email Address" data-sb-validations="required" required />
+                            <input class="form-control" value="{{old('NoOfHours')}}" id="NumberOfHours" min="1" max="5" type="number"
+                                name="NoOfHours" placeholder="Email Address" data-sb-validations="required" required />
                             <label for="emailAddress">Number of hours</label>
                         </div>
 
 
-
+                        @if ($errors->any())
+                        {{ implode('', $errors->all('<div>:message</div>')) }}
+                    @endif
 
                         <!-- Message Input -->
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" min="<?php echo date('Y-m-d'); ?>" name="date" 
-                                type="date" placeholder="pickDate" data-sb-validations="required" required>
+                            <input class="form-control" value="{{old('date')}}" min="<?php echo date('Y-m-d'); ?>" name="date" type="date"
+                                placeholder="pickDate" data-sb-validations="required" required>
                             <label for="message">Parking Date</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control"  name="dateTime" id="ParkDateTime"
-                                type="time" placeholder="pickDate" data-sb-validations="required" required>
+                            <input class="form-control" value="{{old('dateTime')}}" name="dateTime" id="ParkDateTime" type="time"
+                                placeholder="pickDate" data-sb-validations="required" required>
                             <label for="message">Parking time</label>
                         </div>
-                        
-                        <input type="hidden" id="idCatch" name="ParkID" value="<?php echo $data['location']['id']?>">
-    
-
+                        @If(\Session::has('status')) 
+                        <div class="text-danger"> our Working hours is between 9:00 AM and 10:00 PM</div>
+                        @endif
+                        <input type="hidden" id="idCatch" name="ParkID" value="<?php echo $data['location']['id']; ?>">
                         <!-- Submit button -->
                         <div class="mt-6 text-center">
-                            <button style="background-color: #ff7241" class="btn text-light btn-light btn-lg " id="submitButton" type="submit">Check Out</button>
+                            <button style="background-color: #ff7241" class="btn text-light btn-light btn-lg "
+                                id="submitButton" type="submit">Check Out</button>
                         </div>
-
+                     
                     </form>
+                  
                 </div>
             </div>
         </div>
@@ -59,39 +63,43 @@
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap">
         </script>
         <script type="text/javascript">
-        let form =document.getElementById('orderForm');
-        form.addEventListener('submit', formListener)
+            let form = document.getElementById('orderForm');
+            form.addEventListener('submit', formListener)
+
             function formListener(e) {
                 e.preventDefault();
                 let phone = e.target.phone.value;
                 console.log(phone);
                 let time = new Date();
-                let dateTimeHours=e.target.dateTime.valueAsDate.getUTCHours();
-                let dateTimeMinutes=e.target.dateTime.valueAsDate.getMinutes().
-                dateTimeHours=dateTimeHours-2 ;
-                dateTimeMinutes=dateTimeMinutes-60;
+                let dateTimeHours = e.target.dateTime.valueAsDate.getUTCHours();
+                let dateTimeMinutes = e.target.dateTime.valueAsDate.getMinutes().
+                dateTimeHours = dateTimeHours - 2;
+                dateTimeMinutes = dateTimeMinutes - 60;
                 console.log(time.getHours());
-                 console.log('hours'+dateTimeHours);
-                 console.log("min"+dateTimeMinutes);
+                console.log('hours' + dateTimeHours);
+                console.log("min" + dateTimeMinutes);
                 if (!phone.match(/^(()?\d{3}())?(-|\s)?\d{3}(-|\s)?\d{4}$/)) {
                     Swal.fire(
-                      'Incorrect phone number',
-                      'Kindly Check the phone number again',
-                      'info'
-                    )  
+                        'Incorrect phone number',
+                        'Kindly Check the phone number again',
+                        'info'
+                    )
+                    return false;
                 }
-                 if (dateTimeHours<=time.getHours()) {
-                    if (dateTimeMinutes<=time.getMinutes()) {
-                     
-                    Swal.fire(
-                      'Reservation Time Unavailable',
-                      'Kindly choose Parking time 30 minutes after',
-                      'info'
-                    )  
-                    }
-                 }
-                 form.submit();
-                 return false;
+                // if (dateTimeHours <= time.getHours()) {
+                //     if (dateTimeMinutes <= time.getMinutes()) {
+
+                //         Swal.fire(
+                //             'Reservation Time Unavailable',
+                //             'Kindly choose Parking time 30 minutes after',
+                //             'info'
+                //         )
+                //     }
+                //     return false
+                // }
+
+              return form.submit()  ;
+               
             }
 
 
@@ -107,7 +115,7 @@
                     }
                 );
 
-                var arr =<?php echo json_encode($data['location']); ?>
+                var arr = <?php echo json_encode($data['location']); ?>
 
                 console.log(arr);
                 var latitude = arr.lat;
@@ -130,8 +138,8 @@
                 });
             }
         </script>
-        @endsection
-        {{-- // let map, activeInfoWindow, markers = [];
+    @endsection
+    {{-- // let map, activeInfoWindow, markers = [];
         /* ----------------------------- Initialize Map ----------------------------- */
         // function initMap() {
         // map = new google.maps.Map(document.getElementById("map"), {
@@ -188,4 +196,3 @@
             // console.log(event.latLng.lat());
             // console.log(event.latLng.lng());
             //   --}}
-
