@@ -63,12 +63,20 @@
         form.addEventListener('submit', formListener)
             function formListener(e) {
                 e.preventDefault();
-                let time=new Date();
-                console.log(time.toLocaleTimeString());
-                console.log(e.target.dateTime.value);
-                 console.log(e.target.date.value);
-                 form.submit();
-                 return true;
+                let time = new Date();
+                let dateTimeHours=e.target.dateTime.valueAsDate.getUTCHours();
+                let dateTimeMinutes=e.target.dateTime.valueAsDate.getUTCMinutes().
+                dateTimeHours=dateTimeHours-2 ;
+                dateTimeMinutes=dateTimeMinutes+26;
+                console.log(time.getHours());
+                 console.log('hours'+dateTimeHours);
+                 console.log("min"+dateTimeMinutes);
+
+                 if (dateTimeHours<=time.getHours()) {
+                    console.log('Denied request');
+                 }
+                //  form.submit();
+                 return false;
             }
 
 
@@ -84,7 +92,7 @@
                     }
                 );
 
-                var arr = <? php echo json_encode($data['location']);?>;
+                var arr =<?php echo json_encode($data['location']); ?>
 
                 console.log(arr);
                 var latitude = arr.lat;
