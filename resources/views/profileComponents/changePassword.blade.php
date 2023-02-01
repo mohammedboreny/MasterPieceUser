@@ -14,7 +14,7 @@
             <label for="NPassword" class="form-label">New Password</label>
         </div>
         <div class="d-flex align-content-center flex-wrap justify-content-center  ">
-            <button style="background-color:#f43f00 " class="btn text-light  " type="submit">Change Password</button>
+            <button style="background-color:#ff7241 " class="btn text-light  " type="submit">Change Password</button>
         </div>
     </form>
 

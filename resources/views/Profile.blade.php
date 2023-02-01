@@ -1,9 +1,9 @@
 @extends('layout.index')
 @section('content')
 <style>
-    @media (min-width:420px ){
+    @media (max-width:720px ){
         .PageHeader{
-            margin-top: 100px !important;
+            margin-top: 40px !important;
         }
     }
 
@@ -12,8 +12,8 @@
     border-color: #ff7241 !important;
   }
 </style>
-    <div class="container justify-content-center">
-<div class="container justify-content-center mt-md-4 mb-md-4 mt-sm-5 my-5 ">
+    <div class="container justify-content-center mt-md-4 ">
+<div class="container justify-content-center mt-md-5 mb-md-5 mt-sm-5 my-5 ">
     <div class="row justify-content-md-center">
     <div class="col-md-2">
     <ul class="list-group">
