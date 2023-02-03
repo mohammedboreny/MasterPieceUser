@@ -78,6 +78,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // Order And Booking  routes 
     Route::post('/order', 'BookingController@setOrder')->name('order.SetOrder');
     Route::get('/locations', 'LocationController@index')->name('location.index');
+    Route::get('/locations/search', 'MapController@searchPark')->name('location.searchPark');
     Route::post('/locations/{id}', 'LocationController@getLocation')->name('location.get');
     Route::get('/order', 'MapController@index')->name('order.create');
     Route::get('/order/{id}', 'BookingController@checkOut')->name('order.checkOut');

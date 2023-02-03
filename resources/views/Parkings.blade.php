@@ -58,40 +58,66 @@
     </style>
 
 
+    <div class="container pt-5">
+        
+        @if (\Session::has('status'))
+            <div style="background-color: #ff7241" class="alert text-light text-center mt-3"> {!! Session::get('status') !!}</div>
+        @endif
+        <div class="row">
+            <div class="col-md-8">
+                <form action="{{ url('/locations/search') }}" method="GET">
+                    @csrf
+                    <div class="form-floating d-flex justify-center gap-3">
+                        <input class="form-control w-25" style="border-color: #ff7241" type="text" placeholder="search"
+                            name="search" required />
+                        <label for="search"><i class="bi bi-search"></i></label>
+                        <button style="background-color: #ff7241" class=" btn text-light  d-inline" type="submit">Search</button>
+                    </div>
 
-<div class="container pt-5">
-  <form class="form-group" action="" method="post">
-    
-          <div class="row">
-
-              <div class="col-4 ">
-
-                  <div class="form-floating">
-                      <input style="border-color: #f43f00" class="form-control fs-5 h-25" type="search" name="search"
-                          id="" placeholder="form">
-                      <label for="search"><i class="bi bi-search"></i></label>
-                  </div>
-              </div>
-              <div class="col-2 pt-3">
-                  
-                      <input style="background-color: #f43f00" class="form-control text-light"
-                          type="submit" value="Search">
-                
-              </div>
+                </form>
             </div>
           </div>
-        
-  </form>
-</div>
+        </div>
+
 
     <div class="container w-100 justify-content-between">
-      
+        @if (session()->missing('dataSearch'))
+            <div id="content" class="row w-100 gap-5">
+            </div>
+        @else
+            <div class="row w-100 gap-5">
+                @foreach (session()->get('dataSearch') as $item)
+                    <div class="col-lg-3 pb-4 pt-4">
+                        <div class="card map-card">
+                            <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+                                <iframe
+                                    src="https://maps.google.com/maps?q={{ $item['street'] }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                    frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+                            <div class="card-body closed px-0">
+                                <div style="background-color: #ff7241" class="button px-2 mt-3">
+                                    <a style="background-color: #ff7241" href="{{ url('/order', $item['id']) }}"
+                                        class="btn btn-floating id='btn-sub'  btn-lg living-coral text-white float-end"
+                                        style="margin-right: .75rem;">book</a>
+                                </div>
+                                <input type="hidden" name="" id='btn-value' value='${item.id}'>
+                                <div class="bg-white px-4 pb-4 pt-3-5">
+                                    <h5 id="name" class="card-title h5 living-coral-text"> {{ $item['name'] }}</h5>
+                                    <div class="d-flex justify-content-between living-coral-text">
+                                        <h6 id="Address" class="card-subtitle font-weight-light"> {{ $item['street'] }}
+                                        </h6>
+                                        <h6 id="" class="font-small font-weight-light mt-n1"> {{ $item['city'] }}
+                                        </h6>
+                                    </div>
+                                    <hr>
 
-
-
-        <div id="content" class="row w-100 gap-5">
-
-        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
     </div>
 
 
@@ -99,7 +125,8 @@
     <script async>
         let arr = {!! json_encode($data->toArray()) !!};
         console.log(arr);
-        const content = document.querySelector("#content");
+
+
 
 
         const showInHtml = arr.map((item, index) => {
@@ -170,11 +197,11 @@
         })
         content.innerHTML = showInHtml;
 
-        // const card = document.querySelector('.map-card');
-        // const cardBody = card.querySelector('.card-body')
+        const card = document.querySelector('.map-card');
+        const cardBody = card.querySelector('.card-body')
 
-        // card.addEventListener('click', () => {
-        //   cardBody.classList.toggle('closed')
-        // })
+        card.addEventListener('click', () => {
+            cardBody.classList.toggle('closed')
+        })
     </script>
 @endsection
