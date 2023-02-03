@@ -57,14 +57,14 @@
         }
     </style>
 
-
-    <div class="container pt-5">
+<h2 style="text-underline-position: below ; text-decoration-line: underline ; text-decoration-color: #ff7241" class="text-center mt-3">Pick Your Parking Spot</h2>
+    <div class="container pt-3">
         
         @if (\Session::has('status'))
             <div style="background-color: #ff7241" class="alert text-light text-center mt-3"> {!! Session::get('status') !!}</div>
         @endif
-        <div class="row">
-            <div class="col-md-8">
+        <div class="row w-100 justify-content-center align-content-center flex-column">
+            <div class="col-md-12">
                 <form action="{{ url('/locations/search') }}" method="GET">
                     @csrf
                     <div class="form-floating d-flex justify-center gap-3">

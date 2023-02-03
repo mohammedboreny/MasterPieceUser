@@ -12,14 +12,19 @@
         .text-black {
             color: #ff7241 !important
         }
+        body{
+            padding: 0px !important;
+            margin: 0% !important;
+            box-sizing: unset;
+        }
     </style>
     <section class="module ">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 m-auto text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-6  text-center">
                     <h1 class="text-black">Your Parking, Your Way.</h1>
-                    <p style="color: black" >Parking with us will be always available for you</p>
-                    <a href="">
+                    <p style="color: black">Parking with us will be always available for you</p>
+                    <a href="{{ url('/order') }}">
                         <h1 style="background-color: #ff7241" class="btn text-light ">Book now </h1>
                     </a>
                     <img style="filter: invert(57%) sepia(62%) saturate(2372%) hue-rotate(332deg) brightness(101%) contrast(101%);"
@@ -28,89 +33,91 @@
                 </div>
 
             </div>
+        </div>
+    </section>
+
+   
+    <div class="col-md-12">
+        <h3 data-mY="30px" class="text-center hr"> What do we <span class="text-black h3"> Offer</span> </h3>
+    </div>
 
 
-            <div class="d-grid gap-3 text-hide">
-                <div class="p-4  ">dd;aks;alf    </div>
-                <div class="p-4  ">   dsafdafd </div>
-                <div class="p-4  ">   dafdasdsd </div>
-              </div>
-              <div class="col-md-12">
-<h3 data-mY="30px" class="text-center hr"> What do we <span class="text-black h3"> Offer</span>     </h3></div>
-
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="space" data-mY="30px"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="space" data-mY="30px"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="icon-box text-center">
+                <div class="icon-box-icon"><span class=" text-black bi-p-circle"></span></div>
+                <div class="icon-box-title">
+                    <h6>Visual Composer</h6>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="icon-box text-center">
-                        <div class="icon-box-icon"><span class=" text-black bi-p-circle"></span></div>
-                        <div class="icon-box-title">
-                            <h6>Visual Composer</h6>
-                        </div>
-                        <div class="icon-box-content">
-                            <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit sed diam lorem ipsum amet.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="icon-box text-center">
-                        <div class="icon-box-icon"><span class="text-black bi-calendar-check-fill"></span></div>
-                        <div class="icon-box-title">
-                            <h6>Revolution Slider</h6>
-                        </div>
-                        <div class="icon-box-content">
-                            <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit sed diam lorem ipsum amet.</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="icon-box text-center">
-                        <div class="icon-box-icon"><span class=" text-black bi-hourglass-split"></span></div>
-                        <div class="icon-box-title">
-                            <h6>User Experience</h6>
-                        </div>
-                        <div class="icon-box-content">
-                            <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit sed diam lorem ipsum amet.</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="icon-box text-center">
-                        <div class="icon-box-icon"><span class=" text-black bi-check2"></span></div>
-                        <div class="icon-box-title">
-                            <h6>Fully Responsive</h6>
-                        </div>
-                        <div class="icon-box-content">
-                            <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit sed diam lorem ipsum amet.</p>
-                        </div>
-
-                    </div>
+                <div class="icon-box-content">
+                    <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit sed diam lorem ipsum amet.</p>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="col-lg-3 col-md-6">
+            <div class="icon-box text-center">
+                <div class="icon-box-icon"><span class="text-black bi-calendar-check-fill"></span></div>
+                <div class="icon-box-title">
+                    <h6>Revolution Slider</h6>
+                </div>
+                <div class="icon-box-content">
+                    <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit sed diam lorem ipsum amet.</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="icon-box text-center">
+                <div class="icon-box-icon"><span class=" text-black bi-hourglass-split"></span></div>
+                <div class="icon-box-title">
+                    <h6>User Experience</h6>
+                </div>
+                <div class="icon-box-content">
+                    <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit sed diam lorem ipsum amet.</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="icon-box text-center">
+                <div class="icon-box-icon"><span class=" text-black bi-check2"></span></div>
+                <div class="icon-box-title">
+                    <h6>Fully Responsive</h6>
+                </div>
+                <div class="icon-box-content">
+                    <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit sed diam lorem ipsum amet.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+ 
+    <div class="d-grid gap-3 text-hide">
+        <div class="p-4  ">dd;aks;alf </div>
+        <div class="p-4  "> dsafdafd </div>
+  
+    </div>
     <!-- About end-->
     <div class="d-grid gap-3 text-hide">
-        <div class="pt-4  ">dd;aks;alf    </div>
-        <div class="pt-4  ">dd;aks;alf    </div>
-        <div class="pt-4  ">dd;aks;alf    </div>
-      </div>
+        <div class="pt-4  ">dd;aks;alf </div>
+        <div class="pt-4  ">dd;aks;alf </div>
+        <div class="pt-4  ">dd;aks;alf </div>
+    </div>
 
 
-    <h2 data-mY="30px" class="text-center text-black hr text-capitalize" hidden>  </h2>
-    
+    <h2 data-mY="30px" class="text-center text-black hr text-capitalize" hidden> </h2>
+
     <section class="module p-t-0 p-b-4">
 
         <div class="container">
-            
+
             <div class="space" data-MY="-60px"></div>
-            <h3 class="text-center text-dark"> Overview  about <span class="h3 text-black"> Us </span>. </h3>
+            <h3 class="text-center text-dark"> Overview about <span class="h3 text-black"> Us </span>. </h3>
 
             <div class="row">
                 <div style="border-top: #ff7241 solid 2px" class="col-md-4 pricing-wrapper ">
@@ -127,7 +134,7 @@
 
                     </div>
                 </div>
-                <div style="border-top: #ff7241 solid 2px"  class="col-md-4 pricing-wrapper pricing-popular">
+                <div style="border-top: #ff7241 solid 2px" class="col-md-4 pricing-wrapper pricing-popular">
                     <div class="pricing-header">
                         <div class="pricing-icon"><i class="bi bi-emoji-laughing-fill text-black"></i></div>
                         <div class="pricing-title">Standard</div>
@@ -141,7 +148,7 @@
 
                     </div>
                 </div>
-                <div style="border-top: #ff7241 solid 2px"  class="col-md-4 pricing-wrapper pricing-popular">
+                <div style="border-top: #ff7241 solid 2px" class="col-md-4 pricing-wrapper pricing-popular">
                     <div class="pricing-header">
                         <div class="pricing-icon"><i class="bi bi-building-fill-check text-black"></i></div>
                         <div class="pricing-title">Professional</div>
@@ -158,14 +165,14 @@
             </div>
     </section>
 
-    <h2 data-mY="30px" class="text-center text-black hr text-capitalize" hidden>    </h2>
-    <h3 class="text-center "> Explore our users  <span class=" text-black h3"> satisfaction </span>. </h3>
+    <h2 data-mY="30px" class="text-center text-black hr text-capitalize" hidden> </h2>
+    <h3 class="text-center "> Explore our users <span class=" text-black h3"> satisfaction </span>. </h3>
 
- 
-    <section >
+
+    <section>
         <div class="container">
             <div class="row">
-                <div  class="col-md-12">
+                <div class="col-md-12">
                     <div class="review-slides owl-carousel">
                         <div class="review">
                             <div class="review-icons">
@@ -185,11 +192,7 @@
             </div>
     </section>
 
-    <div class="d-grid gap-3 text-hide">
-        <div class="p-4  ">dd;aks;alf    </div>
-        <div class="p-4  ">   dsafdafd </div>
-        <div class="p-4  ">   dafdasdsd </div>
-      </div>
+  
     <script src="{{ asset('css/Home/js/custom/jquery.min.js') }}"></script>
     <script src="{{ asset('css/Home/js/custom/popper.min.js') }}"></script>
     <script src="{{ asset('css/Home/js/bootstrap/bootstrap.min.js') }}"></script>
