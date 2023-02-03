@@ -36,8 +36,7 @@
                 <div class="p-4  ">   dafdasdsd </div>
               </div>
               <div class="col-md-12">
-<h3 data-mY="30px" class="text-center text-black hr"> What do we offer          </h3>
-  </div>
+<h3 data-mY="30px" class="text-center hr"> What do we <span class="text-black h3"> Offer</span>     </h3></div>
 
 
             <div class="row">
@@ -98,15 +97,21 @@
     </section>
     <!-- About end-->
     <div class="d-grid gap-3 text-hide">
-        <div class="p-4  ">dd;aks;alf    </div>
-        <div class="p-4  ">   dsafdafd </div>
+        <div class="pt-4  ">dd;aks;alf    </div>
+        <div class="pt-4  ">dd;aks;alf    </div>
+        <div class="pt-4  ">dd;aks;alf    </div>
       </div>
 
-    <div class="col-12"></div>
 
-    <section class="module p-t-0 p-b-40">
+    <h2 data-mY="30px" class="text-center text-black hr text-capitalize" hidden>  </h2>
+    
+    <section class="module p-t-0 p-b-4">
+
         <div class="container">
+            
             <div class="space" data-MY="-60px"></div>
+            <h3 class="text-center text-dark"> Overview  about <span class="h3 text-black"> Us </span>. </h3>
+
             <div class="row">
                 <div style="border-top: #ff7241 solid 2px" class="col-md-4 pricing-wrapper ">
                     <div class="pricing-header">
@@ -154,7 +159,7 @@
     </section>
 
     <h2 data-mY="30px" class="text-center text-black hr text-capitalize" hidden>    </h2>
-    <h3 class="text-center text-black"> See how our users <span class="text-uppercase"> satisfied </span>. </h3>
+    <h3 class="text-center "> Explore our users  <span class=" text-black h3"> satisfaction </span>. </h3>
 
  
     <section >
@@ -164,7 +169,7 @@
                     <div class="review-slides owl-carousel">
                         <div class="review">
                             <div class="review-icons">
-                                <h2 class="bi-chat-heart text-danger"></h2>
+                                <h2 class="bi-chat-heart text-black"></h2>
                             </div>
                             <div>
                                 <blockquote>
