@@ -37,11 +37,13 @@
     // }
     // &.negative{{
     //     color: red;
+    
     // }
+    .icon{
+        font-style: 18px;
+        padding: 5px;
+        align-self: flex-end;
+        background-color: rgba(255, 68, 0, 0.693);
+    }
 }
-.icon{
-    font-style: 18px;
-    padding: 5px;
-    align-self: flex-end;
-    background-color: rgba(255, 68, 0, 0.693);
-}
+
