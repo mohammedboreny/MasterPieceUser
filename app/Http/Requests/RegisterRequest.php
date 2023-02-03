@@ -26,7 +26,8 @@ class RegisterRequest extends FormRequest
         return [
             'firstName' => 'required|min:2',
             'lastName' => 'required|min:2',
-            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',            'email' => 'required|email:rfc,dns|unique:users,email',
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10', 
+            'email' => 'required|email:rfc,dns|unique:users,email',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password'
         ];

@@ -13,4 +13,9 @@ class Location extends Model
     protected $table='Parkings';
 
 
+    public function location()
+    {
+        return $this->belongsTo(Booking::class);
+    }
+
 }

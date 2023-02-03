@@ -11,4 +11,10 @@ class Booking extends Model
     protected $fillable = ["payment_amount","Phone_Number","Reservation_Time",'BookingDate',"Park_id",'user_id',"Card_id"];
     protected $table = 'booking';
     public $timestamps=true;
+
+
+    public function location()
+    {
+        return $this->hasMany(Location::class);
+    }
 }

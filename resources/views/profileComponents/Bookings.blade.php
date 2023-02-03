@@ -5,29 +5,41 @@
     @If(\Session::has('status')) 
 <div style="background-color: #ff7241" class="alert text-light text-center mt-3"> {!! Session::get('status') !!}</div>
 @endif
-<div class="table-responsive-md "style="height:40vh ;">
-    <table class="table table-secondary">
+
+
+
+@if ($data) 
+<div class="table-responsive-md "style=" ;">
+    <table  class="table">
         <thead>
-            <tr>
-                <th scope="col">Column 1</th>
-                <th scope="col">Column 2</th>
-                <th scope="col">Column 3</th>
+            <tr class="text-center">
+                <th scope="col"> BookingDate</th>
+                <th scope="col">Reservation Time</th>
+                <th scope="col">payment amount</th>
+                
+                <th scope="col">Actions</th>
+                
             </tr>
         </thead>
         <tbody>
-            <tr class="">
-                <td scope="row">R1C1</td>
-                <td>R1C2</td>
-                <td>R1C3</td>
+           
+            @foreach ($data as $item)
+           
+          
+            <tr  class="">
+                <td class="text-center" scope="row">{{$item['BookingDate']}}</td>
+                <td class="text-center">{{$item['Reservation_Time']}} Hours</td>
+                <td class="text-center">{{$item['payment_amount']}} JD</td>
+               
+                <td class="text-center"><a class="btn btn-sm btn-warning" href=""> View Details</a></td>
             </tr>
-            <tr class="">
-                <td scope="row">Item</td>
-                <td>Item</td>
-                <td>Item</td>
-            </tr>
+            @endforeach
+           
         </tbody>
     </table>
 </div>
+
+@endif
 </div>
 
 

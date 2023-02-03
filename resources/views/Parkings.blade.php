@@ -1,82 +1,110 @@
 @extends('layout.index')
 @section('content')
-<style>
+    <style>
+        .card.map-card .living-coral {
+            background-color: #f43f00;
+        }
+
+        .card.map-card .living-coral-text {
+            color: #f43f00;
+        }
+
+        .card.map-card .table th {
+            width: 2rem;
+        }
+
+        .card.map-card .pt-3-5 {
+            padding-top: 1.25rem;
+        }
+
+        .card.map-card .card-body {
+            position: absolute;
+            width: 100%;
+            height: 80%;
+            top: 20%;
+            overflow: hidden;
+            background-color: transparent;
+            -webkit-transition: all 1s;
+            -o-transition: all 1s;
+            transition: all 1s;
+            -webkit-border-radius: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        .card.map-card .card-body.closed {
+            top: 100%;
+            height: 7.5rem;
+            margin-top: -7.5rem;
+        }
+
+        .card.map-card .map-container {
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+        }
+
+        .card.map-card .map-container iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        .card.map-card .button .btn-floating {
+            margin-top: -1.5rem;
+        }
+    </style>
+
+
+
+<div class="container pt-5">
+  <form class="form-group" action="" method="post">
     
-.card.map-card .living-coral {
-  background-color: #fa7268;
-}
+          <div class="row">
 
-.card.map-card .living-coral-text {
-  color: #fa7268;
-}
+              <div class="col-4 ">
 
-.card.map-card .table th {
-  width: 2rem;
-}
-
-.card.map-card .pt-3-5 {
-  padding-top: 1.25rem;
-}
-
-.card.map-card .card-body {
-  position: absolute;
-  width: 100%;
-  height: 80%;
-  top: 20%;
-  overflow: hidden;
-  background-color: transparent;
-  -webkit-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
-  -webkit-border-radius: 0 !important;
-  border-radius: 0 !important;
-}
-
-.card.map-card .card-body.closed {
-  top: 100%;
-  height: 7.5rem;
-  margin-top: -7.5rem;
-}
-
-.card.map-card .map-container {
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0;
-}
-
-.card.map-card .map-container iframe {
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
-
-.card.map-card .button .btn-floating {
-  margin-top: -1.5rem;
-}
-</style>
-
-
-
-<div class="container w-100 justify-content-between">
-    <div id="content" class="row w-100 gap-5">
-  
-  </div>
+                  <div class="form-floating">
+                      <input style="border-color: #f43f00" class="form-control fs-5 h-25" type="search" name="search"
+                          id="" placeholder="form">
+                      <label for="search"><i class="bi bi-search"></i></label>
+                  </div>
+              </div>
+              <div class="col-2 pt-3">
+                  
+                      <input style="background-color: #f43f00" class="form-control text-light"
+                          type="submit" value="Search">
+                
+              </div>
+            </div>
+          </div>
+        
+  </form>
 </div>
 
+    <div class="container w-100 justify-content-between">
+      
 
-<script async>
 
-    let arr = {!! json_encode($data->toArray()) !!};
-    console.log(arr);
-    const content =document.querySelector("#content");
-    
 
-    const showInHtml=arr.map((item, index) => {
-    console.log(arr[index].id);
-        return `
+        <div id="content" class="row w-100 gap-5">
+
+        </div>
+    </div>
+
+
+
+    <script async>
+        let arr = {!! json_encode($data->toArray()) !!};
+        console.log(arr);
+        const content = document.querySelector("#content");
+
+
+        const showInHtml = arr.map((item, index) => {
+            console.log(arr[index].id);
+            return `
         <div class="col-lg-3 pb-4 pt-4">
         <div class="card map-card">
           <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
@@ -85,7 +113,7 @@
           </div>
           <div class="card-body closed px-0">
             <div style="background-color: #ff7241" class="button px-2 mt-3">
-              <a style="background-color: #ff7241" href="{{url('/order/${item.id}')}}" class="btn btn-floating id='btn-sub'  btn-lg living-coral text-white float-end" style="margin-right: .75rem;">book</a>
+              <a style="background-color: #ff7241" href="{{ url('/order/${item.id}') }}" class="btn btn-floating id='btn-sub'  btn-lg living-coral text-white float-end" style="margin-right: .75rem;">book</a>
             </div>
             <input type="hidden" name="" id='btn-value' value='${item.id}'>
             <div class="bg-white px-4 pb-4 pt-3-5">
@@ -139,15 +167,14 @@
 </div>
 
         `
-    })
-    content.innerHTML=showInHtml;
-    
-    // const card = document.querySelector('.map-card');
-    // const cardBody = card.querySelector('.card-body')
-    
-    // card.addEventListener('click', () => {
-    //   cardBody.classList.toggle('closed')
-    // })
-    </script>
+        })
+        content.innerHTML = showInHtml;
 
+        // const card = document.querySelector('.map-card');
+        // const cardBody = card.querySelector('.card-body')
+
+        // card.addEventListener('click', () => {
+        //   cardBody.classList.toggle('closed')
+        // })
+    </script>
 @endsection

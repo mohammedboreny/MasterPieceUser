@@ -7,9 +7,11 @@ use App\Http\Controllers\AuthLoginController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\LogoutController as ControllersLogoutController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,18 +47,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         } else
             return View('/profile');
     })->name('profile');
-    Route::get('/profile/summery', function () {
-        if (!Auth::check()) {
-            return View('authentications.signin');
-        } else
-            return View('profileComponents.Overview');
-    })->name('profile.summary');
-    Route::get('/profile/Bookings', function () {
-        if (!Auth::check()) {
-            return View('authentications.signin');;
-        } else
-            return View('profileComponents.Bookings');
-    })->name('profile.Bookings');
+    Route::get('/profile/summery',[ProfileController::class,'ViewProfile'])->name('profile.summary');
+    Route::patch('/profile/summery/{id}',[ProfileController::class,'editProfile'])->name('profile.edit');
+
+   
+    Route::get('profile/Bookings',[ProfileController::class,'getBookings'])->name('profile.Bookings');
 
 
     Route::get('/profile/addReview', function () {
@@ -66,12 +61,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             return View('profileComponents.addReview');
     })->name('profile.addReview');
 
-    Route::get('/profile/changePassword', function () {
-        if (!Auth::check()) {
-            return View('authentications.signin');
-        } else
-            return View('profileComponents.changePassword');
-    })->name('profile.changePassword');
+    Route::get('/profile/changePassword',[ProfileController::class,'viewPasswordEdit'])->name('profile.changePassword');
+    Route::patch('/profile/changePassword',[ProfileController::class,'updatePassWord'])->name('profile.updatePassWord');
+    
     //End of profile Routes
 
 

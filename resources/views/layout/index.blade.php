@@ -127,9 +127,9 @@
                                         <ul class="dropdown-menu text-center bg-transparent pt-4  mx-n5 "
                                             aria-labelledby="navbarDropdown">
                                             <li><a class="dropdown-item navbarSpecial"
-                                                    href="{{ route('profile.summary') }}">Action</a></li>
+                                                    href="{{ route('profile.summary') }}">Profile</a></li>
                                             <li><a class="dropdown-item navbarSpecial"
-                                                    href="{{ route('profile.Bookings', ['id' => auth()->user()->id]) }}">Your
+                                                    href="{{ route('profile.Bookings') }}">Your
                                                     Orders</a>
 
                                             </li>

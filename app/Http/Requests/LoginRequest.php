@@ -47,6 +47,7 @@ class LoginRequest extends FormRequest
 
     }
 
+   
 
         /**
      * Validate if provided parameter is valid email.
