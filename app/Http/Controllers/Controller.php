@@ -8,6 +8,7 @@ use App\Models\Location;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -81,10 +82,46 @@ class Controller extends BaseController
             return response()->json($data=$dataRoot);            
         }
         public function getParkingsById($id){
-            $data = Location::findOrFail($id);
-            return response()->json($data=$data);            
+            $dataRoot = Location::findOrFail($id);
+            return response()->json($data=$dataRoot);            
         }
       
+        public function editPark(Request $rq,$id){
+            $location=Location::findOrFail($id);
+            $dataRoot =$rq->only($location->getFillable());
+            $location->update($dataRoot);
+            return response()->json();
+        }
+
+        public function deleteParking($id){
+            $data = Location::findOrFail($id);
+            $data->delete();
+            return response()->json();
+        }
 
 
+
+        // Users Api Methods
+        public function getUsers(){
+            $dataRoot = User::all();
+            return response()->json($data=$dataRoot);
+        }
+        public function getUsersById($id){
+            $dataRoot=User::findOrFail($id);
+            return response()->json($data=$dataRoot);
+        }
+        public function deleteUsersById($id){
+            $dataRoot=User::findOrFail($id);
+            $dataRoot->delete();
+            return response()->json();
+
+        }
+        public function editUser(Request $request, $id){
+            $User=User::findOrFail($id);
+            $userx=new User();
+            $userx= $userx->getFillable();
+            $dataRoot =$request->only($userx);
+            $User->update($dataRoot);
+            return response()->json();
+        }
 }

@@ -15,11 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Statistics routes for Admin Home
-Route::get('/getSummary', [Controller::class , 'getSum']); //
-Route::get('/getTotal', [Controller::class , 'getTotal']); //
-Route::get('/getBookingsDesc', [Controller::class , 'getBookingsDesc']); //
+Route::get('/getSummary', [Controller::class, 'getSum']); //
+Route::get('/getTotal', [Controller::class, 'getTotal']); //
+Route::get('/getBookingsDesc', [Controller::class, 'getBookingsDesc']); //
 
 
 // Parking Routes for Parking Section
-Route::get('/getParkings',[Controller::class , 'getParkings']);
-Route::get('/getParkings/{id}',[Controller::class , 'getParkingsById']);
+Route::get('/getParkings', [Controller::class, 'getParkings']);
+Route::get('/getParkings/{id}', [Controller::class, 'getParkingsById']);
+Route::delete('deleteParkings/{id}', [Controller::class, 'deleteParking']);
+Route::put('updateParkings/{id}', [Controller::class, 'editPark']);
+
+
+
+// User Routes for User Section
+Route::get('/getUsers', [Controller::class, 'editUser']);
+Route::get('/getUsers/{id}', [Controller::class, 'getUsersById']);
+Route::delete('deleteUser/{id}', [Controller::class, 'deleteUsersById']);
+Route::put('editUsers/{id}', [Controller::class, 'editUser']);

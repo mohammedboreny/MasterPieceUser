@@ -39,7 +39,7 @@ const Datatable3 = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index, array) => (
+          {rows.map((row) => (
             <TableRow key={row.id}>
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">{row.name}</TableCell>
