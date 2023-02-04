@@ -26,7 +26,17 @@ const Sidebar = () => {
                   </NavLink>
                   <NavLink to="/Records" style={{textDecoration:"none"}}>
                       <li><span>Records</span></li>
+                  </NavLink>
+                  <NavLink to="/Inquiries" style={{textDecoration:"none"}}>
+                      <li><span>Inquiries</span></li>
+                  </NavLink>
+                  <NavLink to="/Reviews" style={{textDecoration:"none"}}>
+                      <li><span>Reviews</span></li>
                       </NavLink>
+                      <NavLink to="/NewsLetter" style={{textDecoration:"none"}}>
+                      <li><span>NewsLetter</span></li>
+                  </NavLink>
+                 
                   <p className="title">Me</p>
                   <li><span>Log Out</span></li>
               </ul>
