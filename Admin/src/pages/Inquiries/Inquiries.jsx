@@ -9,7 +9,7 @@ function Inquiries() {
     <Sidebar />
     <div className="listContainer">
       <Navbar />
-        <Datatable2  />
+        {/* <Datatable2  /> */}
     </div>
   </div>
     </div>

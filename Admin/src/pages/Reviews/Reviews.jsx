@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Datatable2 from '../../components/datatable/Datatable2'
+import ReviewsDataTable from '../../components/datatable/ReviewsDataTable'
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 
@@ -10,7 +10,7 @@ function Reviews() {
     <Sidebar />
     <div className="listContainer">
       <Navbar />
-        <Datatable2  />
+        <ReviewsDataTable  />
     </div>
   </div>
     </div>

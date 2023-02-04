@@ -1,4 +1,5 @@
 import React from 'react'
+import RecordsDatatable from '../../components/datatable/RecordsDatatable'
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 
@@ -8,7 +9,7 @@ function Records() {
     <Sidebar />
     <div className="listContainer">
       <Navbar />
-      {/* <Datatable/> */}
+      <RecordsDatatable/>
     </div>
   </div>
   )
