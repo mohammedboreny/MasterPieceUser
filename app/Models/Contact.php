@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contact extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     protected $fillable = [
         "name",
         'phone',
         "email",
         "content"
     ];
-    protected $table='contact us';
+    protected $table='contactUs';
 }

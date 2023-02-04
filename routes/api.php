@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,4 +13,8 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+Route::get('/getSummary', [Controller::class , 'getSum']); //
+Route::get('/getTotal', [Controller::class , 'getTotal']); //
 

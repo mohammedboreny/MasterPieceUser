@@ -3,7 +3,25 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import React from 'react';
 import "./featured.scss";
 import 'react-circular-progressbar/dist/styles.css';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
+
 const Featured = () => {
+
+  const [summary, setSummary] = useState([])
+
+  useEffect(() => {
+   
+  axios.get('http://127.0.0.1:8000/api/getTotal').then((value) => { 
+    console.log("fetured record",value.data);
+    setSummary(value.data);
+  }).catch((value) => {
+    console.log(value);
+  }) 
+  }, [])
+
+
   return (
     <div className='featured'>
       <div className="top">
@@ -15,29 +33,29 @@ const Featured = () => {
           <CircularProgressbar value={70} text={`$ {70}%`} strokeWidth={5} />
 
         </div>
-        <p className="title">Total Sales</p>
-        <p className="amount">$430</p>
+        <p className="title">Today Sales</p>
+        <p className="amount">{summary.dayTotal?summary.dayTotal:0}$</p>
         <p className="desc">Previous transaction</p>
         <div className="summary">
           <div className="item">
             <div className="itemTitle">Target</div>
             <div className="itemResult">
               <div className="resultAmount">$12.4k</div>
-              <KeyboardArrowDown fontSize='small'/>
+           
             </div>
           </div>
           <div className="item">
             <div className="itemTitle">Last Weak </div>
-            <div className="itemResult negative">
-              <div className="resultAmount">$12.4k</div>
-              <KeyboardArrowDown fontSize='small'/>
+            <div className="itemResult ">
+              <div className="resultAmount">{summary.weeklyTotal}</div>
+            
             </div>
           </div>
           <div className="item">
             <div className="itemTitle">Last Month</div>
-            <div className="itemResult positive">
-              <div className="resultAmount">$12.4k</div>
-              <KeyboardArrowDown fontSize='small'/>
+            <div className="itemResult ">
+              <div className="resultAmount">{summary.weeklyTotal}</div>
+           
             </div>
           </div>
         </div>

@@ -6,19 +6,30 @@ import Featured from '../../components/featured/Featured.jsx';
 import Chart from '../../components/charts/Chart';
 import ListTable from '../../components/table/Table.jsx';
 import './home.scss';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useMemo } from 'react';
 // import { List } from '@mui/material';
 
 const Home = () => {
+
+
+  
+
+  // useMemo(() =>
+  // { },
+  //   [summary])
+  
   return (
     <div className='home'>
       <Sidebar />
       <div className='homeContainer'>
         <Navbar />
         <div className="widgets">
-          <Widget type="user" />
-          <Widget type="Parks"/>
-          <Widget type="earnings"/>
-          <Widget type="balance"/>
+          <Widget type="user"  />
+          <Widget type="Parks"  />
+          <Widget type="earnings" />
+          <Widget type="balance"  />
         </div>
         <div className="charts">
           <Featured/>

@@ -24,10 +24,6 @@ const Navbar = () => {
               onClick={() => dispatch({ type: "TOGGLE" })}
             />
           </div>
-        
-          
-         
-          
         </div>
       </div>
     </div>
