@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Contact;
 use App\Models\Location;
+use App\Models\Newsletter;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -124,4 +125,55 @@ class Controller extends BaseController
             $User->update($dataRoot);
             return response()->json();
         }
+
+
+        // Bookings Api Methods
+        public function getBookings(){
+            $dataRoot=Booking::all();
+            return response()->json($data=$dataRoot);            
+        }
+        public function getBookingsById($id){
+            $dataRoot = Booking::findOrFail($id);
+            return response()->json($data=$dataRoot); 
+        }
+        public function deleteBookingById($id){
+            $data=Booking::findOrFail($id);
+            $data->delete();
+            return response()->json();
+        }
+        public function editBooking(Request $request, $id){
+
+            $User=Booking::findOrFail($id);
+            $userx=new Booking();
+            $userx= $userx->getFillable();
+            $dataRoot =$request->only($userx);
+            $User->update($dataRoot);
+            return response()->json();
+        }
+        // contact us api Methods
+        public function getContact(){
+            $dataRoot= Contact::all();
+            return response()->json($data=$dataRoot); 
+        }
+        public function deleteContact($id){
+            $data=Contact::findOrFail($id);
+            $data->delete();
+            return response()->json();
+        }
+        
+
+        // Reviews Api Methods
+        // public function getReview(){
+        //     $dataRoot= Review::all();
+        //     return response()->json();
+        // }
+
+
+            // News Letter Api 
+            public function getNewsletter(){
+                $dataRoot=Newsletter::all();
+                return response()->json($data=$dataRoot); 
+            }
+
+        
 }

@@ -33,3 +33,23 @@ Route::get('/getUsers', [Controller::class, 'editUser']);
 Route::get('/getUsers/{id}', [Controller::class, 'getUsersById']);
 Route::delete('deleteUser/{id}', [Controller::class, 'deleteUsersById']);
 Route::put('editUsers/{id}', [Controller::class, 'editUser']);
+
+
+// bookings routes for records sections
+Route::get('/getBookings', [Controller::class, 'getBookings']);
+Route::get('/getBookings/{id}', [Controller::class, 'getBookingsById']);
+Route::delete('deleteBooking/{id}', [Controller::class, 'deleteBookingById']);
+Route::put('editBooking/{id}', [Controller::class, 'editBooking']);
+
+
+// contact us routes for inquires section
+Route::get('/getContact', [Controller::class, 'getContact']);
+Route::get('/deleteContact/{id}', [Controller::class,'deleteContact']);
+
+
+// reviews routes for reviews section
+Route::get('/getReview', [Controller::class, 'getReview']);
+
+
+// Newspaper routes for Newsletter section
+Route::get('/getNewsletter', [Controller::class, 'getNewsletter']);
