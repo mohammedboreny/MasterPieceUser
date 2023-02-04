@@ -1,5 +1,5 @@
 import './chart.scss';
-import { AreaChart, Area,BarChart,Legend,Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart,Legend,Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const data = [
   { name: "JAN", total: 1200 },

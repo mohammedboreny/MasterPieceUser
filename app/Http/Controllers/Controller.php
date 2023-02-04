@@ -18,6 +18,10 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
+
+    
+
+
       public function getSum() {
         try {
             $countUser=User::count();
@@ -64,7 +68,22 @@ class Controller extends BaseController
             }
         }
 
+        public function getBookingsDesc(){
+            $dataRoot=Booking::orderBy('created_at', 'desc')->take(5)->get();
+            return response()->json(
+               $data=$dataRoot
+            );
+        }
 
+
+        public function getParkings(){
+            $dataRoot = Location::all();
+            return response()->json($data=$dataRoot);            
+        }
+        public function getParkingsById($id){
+            $data = Location::findOrFail($id);
+            return response()->json($data=$data);            
+        }
       
 
 

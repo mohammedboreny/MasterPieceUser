@@ -13,6 +13,8 @@ import {
 import { productInputs, userInputs } from "./formSource";
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
+import Records from "./pages/records/Records";
+import Parkplaces from "./pages/Park/Parkplaces";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   return (
@@ -36,8 +38,17 @@ function App() {
             <Route path=":productId" element={<Single />} />
             <Route path="new" element={<New inputs={productInputs} title="Add New Park" />} />
           </Route>
-
-
+          <Route path="Records">
+            <Route index element={<Records />} />
+            {/* <Route path=":RecordsId" element={<Records />} /> */}
+            {/* <Route path="new" element={<New inputs={productInputs} title="Add New Park" />} /> */}
+          </Route>
+          <Route path="Parks">
+            <Route index element={<Parkplaces />} />
+            {/* <Route path=":productId" element={<Parkplaces />} /> */}
+            {/* <Route path="new" element={<New inputs={productInputs} title="Add New Park" />} /> */}
+       
+          </Route>
         </Routes>
       </Router>
     </div>

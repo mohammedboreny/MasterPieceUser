@@ -1,4 +1,4 @@
-import { KeyboardAltTwoTone, KeyboardArrowDown, MoreVert } from '@mui/icons-material'
+import { MoreVert } from '@mui/icons-material'
 import { CircularProgressbar } from 'react-circular-progressbar';
 import React from 'react';
 import "./featured.scss";

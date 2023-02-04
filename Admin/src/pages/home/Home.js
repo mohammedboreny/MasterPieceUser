@@ -9,10 +9,25 @@ import './home.scss';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useMemo } from 'react';
+import axios from 'axios';
 // import { List } from '@mui/material';
 
 const Home = () => {
 
+  const [records, setRecords] = useState();
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8000/api/getBookingsDesc')
+    .then(res => {
+      console.log(res.data)
+      setRecords(res.data);
+    
+    })
+    .catch(err => {
+      console.error(err); 
+    })
+    
+       },[])
 
   
 
@@ -37,7 +52,7 @@ const Home = () => {
         </div>
         <div className="listContainer">
           <div className="listTitle">Latest  Records</div>
-          <ListTable/>
+          <ListTable data={records} type='records'/>
         </div>
       </div>
     </div>

@@ -22,6 +22,7 @@ const Widget = ({ type,Total }) => {
   axios.get('http://127.0.0.1:8000/api/getSummary').then((value) => { 
     console.log(value.data);
     setSummary(value.data);
+    
   }).catch((value) => {
     console.log(value);
   }) 

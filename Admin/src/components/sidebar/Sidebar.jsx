@@ -1,5 +1,5 @@
 import "./Sidebar.scss";
-import DashboardIcon from '@mui/icons-material/Dashboard';
+// import DashboardIcon from '@mui/icons-material/Dashboard';
 import { NavLink } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
@@ -21,10 +21,12 @@ const Sidebar = () => {
                   <NavLink to="/users" style={{textDecoration:"none"}}>
                       <li><span>Users</span></li>
                   </NavLink>
-                  <NavLink to="/products" style={{textDecoration:"none"}}>
+                  <NavLink to="/Parks" style={{textDecoration:"none"}}>
                       <li><span>Park places</span></li>
+                  </NavLink>
+                  <NavLink to="/Records" style={{textDecoration:"none"}}>
+                      <li><span>Records</span></li>
                       </NavLink>
-                  <li><span>Records</span></li>
                   <p className="title">Me</p>
                   <li><span>Log Out</span></li>
               </ul>

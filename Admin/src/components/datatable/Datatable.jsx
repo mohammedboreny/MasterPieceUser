@@ -1,45 +1,62 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./datatable.scss"
-import { DataGrid } from '@material-ui/data-grid';
-
+import Table  from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 import { userColumns, userRows } from "../../datatablerows"
 import { Link } from 'react-router-dom';
-const Datatable = () => {
-  const [data, setData] = useState(userRows);
-  const handleDelete = (id) => {
-    setData(data.filter((item)=>item.id !== id))
+import axios from 'axios';
+const Datatable = (props) => {
+  const [rows, setRecords] = useState([]);
+
+  switch (props.type) { 
+    case ('records'):
+      setRecords(props.data);
+      break;
+    case ('userRecords'):
+      setRecords(props.data);
+      break;
+    default:
+      break;
   }
-    const actionColumn = [{
-      field: "action", headerName: "Action", width: 200,
-      renderCell: (params) => {
-            return (
-              <div className="cellAction">
-                <Link to="/users/test" style={{textDecoration:"none"}}>
-                  <button className="viewButton">view</button>
-                </Link>
-                  <button className="deleteButton" onClick={()=>handleDelete(params.row.id)}>Delete</button>
-                </div>
-            )
-        }
-    }]
+  
+
+      
   return (
-    <div className='datatable'>
-      <div className="dataTableTitle">
-      </div>
-   
-      <DataGrid
-        className='datagrid'
-        rows={data}
-        columns={userColumns.concat(actionColumn)}
-                  pageSize={9}
-                  rowsPerPageOptions={[9]}
-        checkboxSelection
-        disableSelectionOnClick
-      />
-          <Link to="/users/new" className='link'>
-     <button className='dataTableButton'> Add New</button>
-      </Link>
-    </div>
+    <TableContainer component={Paper} className="table">
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell className="tableCell">Tracking ID</TableCell>
+            <TableCell className="tableCell">Customer ID</TableCell>
+            <TableCell className="tableCell">Order Date</TableCell>
+            <TableCell className="tableCell">Hours reserved</TableCell>
+            <TableCell className="tableCell">Phone_Number</TableCell>
+            <TableCell className="tableCell">payment_amount</TableCell>
+            <TableCell className="tableCell">Status</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row, index, array) => (
+            <TableRow key={row.id}>
+              <TableCell className="tableCell">{row.id}</TableCell>
+              <TableCell className="tableCell">{row.user_id}</TableCell>
+              <TableCell className="tableCell">{row.BookingDate}</TableCell>
+              <TableCell className="tableCell">{row.Reservation_Time} Hours</TableCell>
+              <TableCell className="tableCell">{row.Phone_Number}</TableCell>
+              <TableCell className="tableCell">{row.payment_amount} JD</TableCell>
+              <TableCell className="tableCell">
+                {/* <span className={`status ${row.status}`}>{row.status}</span> */}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }
 

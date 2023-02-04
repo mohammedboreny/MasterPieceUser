@@ -57,13 +57,13 @@ const New = ({ inputs, title }) => {
                   onChange={(e) => setFile(e.target.files[0])}
                   style={{ display: "none" }} />
               </div>
-              {inputs.map((input) => {
+              {/* {inputs.map((input) => {
                        <div className="formInput" key={input.id}>
                          <label > {input.label}</label>
                          <input type={input.type} placeholder={input.placeholder} />
                        </div>
 
-                })}
+                })} */}
               <button>Edit</button>
           </form>
           </div>
