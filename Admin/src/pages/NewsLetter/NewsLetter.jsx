@@ -8,7 +8,7 @@ function NewsLetter() {
       <div>
              <div className='list'>
     <Sidebar />
-    <div className="listContainer">
+    <div className="listContainer align-content-center">
       <Navbar />
         <NewsLetterDataTable  />
     </div>

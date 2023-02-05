@@ -13,6 +13,7 @@ import TablePagination from '@mui/material/TablePagination';
 
 import { TableFooter } from '@mui/material';
 import TablePaginationActions from './TablePaginationActions';
+import { DarkModeContext } from '../../context/darkModeContext';
 
 
 
@@ -85,12 +86,12 @@ const InquiriesDatatable = (props) => {
   <>
        <h3 className='text-center'>News letter Section</h3>
       
-    <TableContainer  component={Paper} className="table  w-50">
+    <TableContainer  component={Paper} className="table  d-flex ">
       <Table    sx={{ minWidth: 100 }} aria-label="simple  table">
         <TableHead >
           <TableRow >
-            <TableCell className="tableCell ">Tracking ID</TableCell>
-            <TableCell className="tableCell">email</TableCell>      
+            <TableCell className="tableCell text-center ">Tracking ID</TableCell>
+            <TableCell className="tableCell text-center">email</TableCell>      
           </TableRow>
         </TableHead>
         <TableBody>
@@ -98,26 +99,30 @@ const InquiriesDatatable = (props) => {
             <TableRow key={row.id}>
               <TableCell className="tableCell text-center">{row.id}</TableCell>
             
-              <TableCell className="tableCell">{row.email} </TableCell>
+              <TableCell className="tableCell text-center">{row.email} </TableCell>
            
       
                   
             </TableRow>
           ))}
             </TableBody>
-            <TableFooter>
-              <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
+            <TableFooter className='tableCell'  >
+              <TablePagination 
+                rowsPerPageOptions={[5, 10, 25, { className: DarkModeContext ? 'tableCell' : 'text-light', label: 'All', value: -1 }]}
+              colSpan={6}
               count={rows.length}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{
                 inputProps: {
+
                   'aria-label': 'rows per page',
+                  'className': ' table datatable datagrid',
+
                 },
                 native: true,
               }}
+              className={DarkModeContext ? 'd-flex tableCell ': ' tableCell'}
               onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 ActionsComponent={TablePaginationActions}
