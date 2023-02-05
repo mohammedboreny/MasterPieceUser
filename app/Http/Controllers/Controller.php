@@ -88,13 +88,13 @@ class Controller extends BaseController
     }
     public function getParkingsById($id)
     {
-        $dataRoot = Location::findOrFail($id);
+        $dataRoot = Location::find($id);
         return response()->json($data = $dataRoot);
     }
 
     public function editPark(Request $rq, $id)
     {
-        $location = Location::findOrFail($id);
+        $location = Location::find($id);
         $dataRoot = $rq->only($location->getFillable());
         $location->update($dataRoot);
         return response()->json();
@@ -102,7 +102,7 @@ class Controller extends BaseController
 
     public function deleteParking($id)
     {
-        $data = Location::findOrFail($id);
+        $data = Location::find($id);
         $data->delete();
         return response()->json();
     }
@@ -117,12 +117,12 @@ class Controller extends BaseController
     }
     public function getUsersById($id)
     {
-        $dataRoot = User::findOrFail($id);
+        $dataRoot = User::find($id);
         return response()->json($data = $dataRoot);
     }
     public function deleteUsersById($id)
     {
-        $dataRoot = User::findOrFail($id);
+        $dataRoot = User::find($id);
         $dataRoot->delete();
         return response()->json();
     }
@@ -143,19 +143,19 @@ class Controller extends BaseController
     }
     public function getBookingsById($id)
     {
-        $dataRoot = Booking::findOrFail($id);
+        $dataRoot = Booking::find($id);
         return response()->json($data = $dataRoot);
     }
     public function deleteBookingById($id)
     {
-        $data = Booking::findOrFail($id);
+        $data = Booking::find($id);
         $data->delete();
         return response()->json();
     }
     public function editBooking(Request $request, $id)
     {
 
-        $User = Booking::findOrFail($id);
+        $User = Booking::find($id);
         $userx = new Booking();
         $userx = $userx->getFillable();
         $dataRoot = $request->only($userx);
@@ -170,7 +170,7 @@ class Controller extends BaseController
     }
     public function deleteContact($id)
     {
-        $data = Contact::findOrFail($id);
+        $data = Contact::find($id);
         $data->delete();
         return response()->json();
     }

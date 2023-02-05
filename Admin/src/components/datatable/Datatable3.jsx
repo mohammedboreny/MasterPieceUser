@@ -25,7 +25,7 @@ const Datatable3 = (props) => {
           confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://127.0.0.1:8000/api/deleteUsersById/${id}`).then((value) => {
+                axios.delete(`http://127.0.0.1:8000/api/deleteUser/${id}`).then((value) => {
                   console.log(value.status);
                 }).catch((error) => {
                   console.error(error);
@@ -52,7 +52,9 @@ const Datatable3 = (props) => {
     
        },[])
   return (
-    <TableContainer component={Paper} className="table">
+    <>
+    <h3 className='text-center'>Users Section</h3>
+    < TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -88,8 +90,10 @@ const Datatable3 = (props) => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
-  )
+      </TableContainer>
+      </>
+      )
+     
 }
 
 export default Datatable3

@@ -39,7 +39,7 @@ Route::patch('editUsers/{id}',[Controller::class,'editusers']);
 Route::get('/getBookings', [Controller::class, 'getBookings']);
 Route::get('/getBookings/{id}', [Controller::class, 'getBookingsById']);
 Route::delete('deleteBooking/{id}', [Controller::class, 'deleteBookingById']);
-Route::patch('editBooking/{id}', [Controller::class, 'editBooking']);
+Route::patch('/editBooking/{id}', [Controller::class, 'editBooking']);
 
 
 // contact us routes for inquires section

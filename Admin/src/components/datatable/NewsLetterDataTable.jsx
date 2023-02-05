@@ -8,8 +8,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from 'axios';
-import ParksModal from '../Modal/ParksModal';
 import Swal from 'sweetalert2';
+import TablePagination from '@mui/material/TablePagination';
+
+import { TableFooter } from '@mui/material';
+import TablePaginationActions from './TablePaginationActions';
+
+
 
 const InquiriesDatatable = (props) => {
     const [rows, setRecords] = useState([]);
@@ -38,7 +43,17 @@ const InquiriesDatatable = (props) => {
             }
           })
   }
-  
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   const handlePopUp = (content) => { 
     Swal.fire({
@@ -67,11 +82,10 @@ const InquiriesDatatable = (props) => {
     
     
   return (
-    <div className="container">
-      <div className="row mt-3 d-flex align-items-center justify-items-center">
-       
+  <>
+       <h3 className='text-center'>News letter Section</h3>
       
-    <TableContainer  component={Paper} className="table w-50">
+    <TableContainer  component={Paper} className="table  w-50">
       <Table    sx={{ minWidth: 100 }} aria-label="simple  table">
         <TableHead >
           <TableRow >
@@ -90,11 +104,28 @@ const InquiriesDatatable = (props) => {
                   
             </TableRow>
           ))}
-        </TableBody>
-      </Table>
+            </TableBody>
+            <TableFooter>
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+              colSpan={3}
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              SelectProps={{
+                inputProps: {
+                  'aria-label': 'rows per page',
+                },
+                native: true,
+              }}
+              onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                ActionsComponent={TablePaginationActions}
+              />
+            </TableFooter>
+          </Table>
           </TableContainer>
-        </div>
-        </div>
+          </>
   )
 }
 

@@ -11,6 +11,7 @@ import Paper from "@mui/material/Paper";
 import { userColumns, userRows } from "../../datatablerows"
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { TableFooter, TablePagination } from '@mui/material';
 const Datatable = (props) => {
   const [rows, setRecords] = useState([]);
 
@@ -24,8 +25,16 @@ const Datatable = (props) => {
     default:
       break;
   }
-  
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
       
   return (
     <TableContainer component={Paper} className="table">
@@ -56,8 +65,25 @@ const Datatable = (props) => {
             </TableRow>
           ))}
         </TableBody>
-      </Table>
-    </TableContainer>
+        <TableFooter>
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+              colSpan={3}
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              SelectProps={{
+                inputProps: {
+                  'aria-label': 'rows per page',
+                },
+                native: true,
+              }}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </TableFooter>
+          </Table>
+          </TableContainer>
   )
 }
 

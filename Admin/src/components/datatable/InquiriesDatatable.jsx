@@ -67,6 +67,8 @@ const InquiriesDatatable = (props) => {
     
     
   return (
+    <>
+    <h3 className='text-capitalize text-center fst-italic'>Inquiries Section</h3>
     <TableContainer  component={Paper} className="table text">
       <Table   sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead >
@@ -96,7 +98,8 @@ const InquiriesDatatable = (props) => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+      </TableContainer>
+      </>
   )
 }
 

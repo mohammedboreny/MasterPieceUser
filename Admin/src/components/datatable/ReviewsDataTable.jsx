@@ -55,6 +55,8 @@ const ReviewsDataTable = (props) => {
     
     
   return (
+    <>
+      <h3 className='text-capitalize text-center fst-italic'>Reviews Section</h3>
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -86,7 +88,8 @@ const ReviewsDataTable = (props) => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+      </TableContainer>
+      </>
   )
 }
 
