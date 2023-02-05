@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Datatable2 from '../../components/datatable/Datatable2'
+import NewsLetterDataTable from '../../components/datatable/NewsLetterDataTable'
 import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 
@@ -10,7 +10,7 @@ function NewsLetter() {
     <Sidebar />
     <div className="listContainer">
       <Navbar />
-        {/* <Datatable2  /> */}
+        <NewsLetterDataTable  />
     </div>
   </div>
 

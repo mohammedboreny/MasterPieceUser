@@ -11,7 +11,7 @@ import axios from 'axios';
 import ParksModal from '../Modal/ParksModal';
 import Swal from 'sweetalert2';
 
-const Datatable2 = (props) => {
+const InquiriesDatatable = (props) => {
     const [rows, setRecords] = useState([]);
 
     function handleDelete(id) {
@@ -25,7 +25,7 @@ const Datatable2 = (props) => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
               if (result.isConfirmed) {
-                  axios.delete(`http://127.0.0.1:8000/api/deleteParkings/${id}`).then((value) => {
+                  axios.delete(`http://127.0.0.1:8000/api/deleteContact/${id}`).then((value) => {
                     console.log(value.status);
                   }).catch((error) => {
                     console.error(error);
@@ -37,10 +37,22 @@ const Datatable2 = (props) => {
               )
             }
           })
-    }
+  }
+  
+
+  const handlePopUp = (content) => { 
+    Swal.fire({
+      title: 'Sweet!',
+      text: `${content}`,
+      imageUrl: 'https://unsplash.it/400/200',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+    })
+  }
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/getParkings')
+    axios.get('http://127.0.0.1:8000/api/getContact')
     .then(res => {
       console.log(res.data)
       setRecords(res.data);
@@ -55,39 +67,35 @@ const Datatable2 = (props) => {
     
     
   return (
-    <TableContainer component={Paper} className="table">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell className="tableCell">Tracking ID</TableCell>
-            <TableCell className="tableCell">name</TableCell>
-            <TableCell className="tableCell">street</TableCell>
-            <TableCell className="tableCell">city</TableCell>
-                      <TableCell className="tableCell">Park Contact</TableCell>
-                      <TableCell className="tableCell">More</TableCell>
-     
+    <div className="container">
+      <div className="row mt-3 d-flex align-items-center justify-items-center">
+       
+      
+    <TableContainer  component={Paper} className="table w-50">
+      <Table    sx={{ minWidth: 100 }} aria-label="simple  table">
+        <TableHead >
+          <TableRow >
+            <TableCell className="tableCell ">Tracking ID</TableCell>
+            <TableCell className="tableCell">email</TableCell>      
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.id}</TableCell>
-              <TableCell className="tableCell">{row.name}</TableCell>
-              <TableCell className="tableCell">{row.street}</TableCell>
-              <TableCell className="tableCell">{row.city} </TableCell>
-                  <TableCell className="tableCell">{row.phone}</TableCell>
-                  <TableCell className='w-25'>
-                      <div className=" justify-content-start gap-2 d-flex  align-items-baseline " >
-                          <ParksModal key={row.id} color='btn btn-primary' RowInfo={row} id={row.id} />
-                          <button className='btn btn-danger ' type='submit' onClick={(e)=>handleDelete(row.id)}>Delete</button>
-                          </div>
-                  </TableCell>
+              <TableCell className="tableCell text-center">{row.id}</TableCell>
+            
+              <TableCell className="tableCell">{row.email} </TableCell>
+           
+      
+                  
             </TableRow>
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+          </TableContainer>
+        </div>
+        </div>
   )
 }
 
-export default Datatable2
+export default InquiriesDatatable

@@ -18,6 +18,7 @@ import Parkplaces from "./pages/Park/Parkplaces";
 import Inquiries from "./pages/Inquiries/Inquiries";
 import NewsLetter from "./pages/NewsLetter/NewsLetter";
 import Reviews from "./pages/Reviews/Reviews";
+import Users from "./pages/Users/Users";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   return (
@@ -30,7 +31,7 @@ function App() {
           </Route>
 
           <Route path="users">
-            <Route index element={<List />} />
+            <Route index element={<Users />} />
             <Route path=":userId" element={<Single />} />
             <Route path="new" element={<New inputs={ userInputs} title="Add New User"/>} />
           </Route>

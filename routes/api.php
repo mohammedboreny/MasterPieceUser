@@ -24,27 +24,27 @@ Route::get('/getBookingsDesc', [Controller::class, 'getBookingsDesc']); //
 Route::get('/getParkings', [Controller::class, 'getParkings']);
 Route::get('/getParkings/{id}', [Controller::class, 'getParkingsById']);
 Route::delete('deleteParkings/{id}', [Controller::class, 'deleteParking']);
-Route::put('updateParkings/{id}', [Controller::class, 'editPark']);
+Route::patch('updateParkings/{id}', [Controller::class, 'editPark']);
 
 
 
 // User Routes for User Section
-Route::get('/getUsers', [Controller::class, 'editUser']);
+Route::get('/getUsers', [Controller::class, 'getUsers']);
 Route::get('/getUsers/{id}', [Controller::class, 'getUsersById']);
-Route::delete('deleteUser/{id}', [Controller::class, 'deleteUsersById']);
-Route::put('editUsers/{id}', [Controller::class, 'editUser']);
+Route::delete('deleteUser/{id}',[Controller::class, 'deleteUsersById']);
+Route::patch('editUsers/{id}',[Controller::class,'editusers']);
 
 
 // bookings routes for records sections
 Route::get('/getBookings', [Controller::class, 'getBookings']);
 Route::get('/getBookings/{id}', [Controller::class, 'getBookingsById']);
 Route::delete('deleteBooking/{id}', [Controller::class, 'deleteBookingById']);
-Route::put('editBooking/{id}', [Controller::class, 'editBooking']);
+Route::patch('editBooking/{id}', [Controller::class, 'editBooking']);
 
 
 // contact us routes for inquires section
 Route::get('/getContact', [Controller::class, 'getContact']);
-Route::get('/deleteContact/{id}', [Controller::class,'deleteContact']);
+Route::delete('/deleteContact/{id}', [Controller::class,'deleteContact']);
 
 
 // reviews routes for reviews section

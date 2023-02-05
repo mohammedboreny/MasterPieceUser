@@ -11,7 +11,7 @@ import axios from 'axios';
 import ParksModal from '../Modal/ParksModal';
 import Swal from 'sweetalert2';
 
-const RecordsDatatable = (props) => {
+const InquiriesDatatable = (props) => {
     const [rows, setRecords] = useState([]);
 
     function handleDelete(id) {
@@ -25,7 +25,7 @@ const RecordsDatatable = (props) => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
               if (result.isConfirmed) {
-                  axios.delete(`http://127.0.0.1:8000/api/deleteParkings/${id}`).then((value) => {
+                  axios.delete(`http://127.0.0.1:8000/api/deleteContact/${id}`).then((value) => {
                     console.log(value.status);
                   }).catch((error) => {
                     console.error(error);
@@ -37,10 +37,22 @@ const RecordsDatatable = (props) => {
               )
             }
           })
-    }
+  }
+  
+
+  const handlePopUp = (content) => { 
+    Swal.fire({
+      title: 'Sweet!',
+      text: `${content}`,
+      imageUrl: 'https://unsplash.it/400/200',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+    })
+  }
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/getBookings')
+    axios.get('http://127.0.0.1:8000/api/getContact')
     .then(res => {
       console.log(res.data)
       setRecords(res.data);
@@ -55,36 +67,31 @@ const RecordsDatatable = (props) => {
     
     
   return (
-    <TableContainer component={Paper} className="table">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell className="tableCell">Tracking ID</TableCell>
-            <TableCell className="tableCell">BookingDate</TableCell>
-            <TableCell className="tableCell">Period</TableCell>
-            <TableCell className="tableCell">Phone_Number</TableCell>
-                      <TableCell className="tableCell">payment_amount</TableCell>
+    <TableContainer  component={Paper} className="table text">
+      <Table   sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead >
+          <TableRow >
+            <TableCell className="tableCell ">Tracking ID</TableCell>
+            <TableCell className="tableCell ">name</TableCell>
+            <TableCell className="tableCell">email</TableCell>
+            <TableCell className="tableCell ">phone</TableCell>
             <TableCell className="tableCell">created_at</TableCell>
-            <TableCell className="tableCell">Actions</TableCell>
-            
-     
+            <TableCell className="tableCell text-center">Actions</TableCell>     
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.id}</TableCell>
-              <TableCell className="tableCell">{row.BookingDate}</TableCell>
-              <TableCell className="tableCell">{row.Reservation_Time} Hours</TableCell>
-              <TableCell className="tableCell">{row.Phone_Number} </TableCell>
-              <TableCell className="tableCell">{row.payment_amount}</TableCell>
-              <TableCell className="tableCell">{row.created_at}</TableCell>
-                  <TableCell className='w-25'>
-                      <div className=" justify-content-start gap-2 d-flex  align-items-baseline " >
-                          <ParksModal key={row.id} color='btn btn-primary' RowInfo={row} id={row.id} />
-                          <button className='btn btn-danger ' type='submit' onClick={(e)=>handleDelete(row.id)}>Delete</button>
-                          </div>
+              <TableCell className="tableCell text-center">{row.id}</TableCell>
+              <TableCell className="tableCell">{row.name}</TableCell>
+              <TableCell className="tableCell">{row.email} </TableCell>
+              <TableCell className="tableCell">{row.phone} </TableCell>
+              <TableCell className="tableCell">{row.created_at?row.created_at:<span>'NotProvided'</span>}</TableCell>
+                  <TableCell className='w-100  justify-content-center gap-2 d-flex  align-items-start'>
+                <button  className='btn btn-secondary text-center' type='submit' onClick={(e)=>handlePopUp(row.content,row.name)}>Show </button>
+                <button className='btn btn-danger text-center' type='submit' onClick={(e)=>handleDelete(row.id)}>Delete</button>
                   </TableCell>
+                  
             </TableRow>
           ))}
         </TableBody>
@@ -93,4 +100,4 @@ const RecordsDatatable = (props) => {
   )
 }
 
-export default RecordsDatatable
+export default InquiriesDatatable
